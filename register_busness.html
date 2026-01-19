@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estabelecimento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px 0;
+        }
+        .register-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .register-container h2 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .register-subtitle {
+            color: #999;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+        .form-label {
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-control {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+            background-color: #fff;
+        }
+        .form-control::placeholder {
+            color: #bbb;
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        .btn-register:active {
+            transform: translateY(0);
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #f0f0f0;
+            color: #666;
+            font-size: 14px;
+        }
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .input-group-mb {
+            margin-bottom: 20px;
+        }
+        .row-two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .row-three-cols {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 576px) {
+            .row-two-cols,
+            .row-three-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Cadastro de Estabelecimento</h2>
+        <p class="register-subtitle">Preencha os dados do seu negócio</p>
+
+        <div id="error-message"></div>
+
+        <form>
+            
+            <div class="input-group-mb">
+                <label for="name" class="form-label">Nome do Estabelecimento</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome do seu estabelecimento" required>
+            </div>
+
+            <div class="input-group-mb">
+                <label for="cnpj" class="form-label">CNPJ</label>
+                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" required>
+            </div>
+
+            <div class="row-two-cols">
+                <div>
+                    <label for="cep" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+                </div>
+                <div>
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+                </div>
+            </div>
+
+            <div class="input-group-mb">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, Avenida, etc." required>
+            </div>
+
+            <div class="row-three-cols">
+                <div>
+                    <label for="cidade" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" required>
+                </div>
+                <div>
+                    <label for="numero" class="form-label">Número</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Nº" required>
+                </div>
+            </div>
+
+            <div class="input-group-mb">
+                <label for="estado" class="form-label">Estado</label>
+                <select class="form-control" id="estado" name="estado" required>
+                    <option value="">Selecione o estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+
+            <div class="form-check" style="margin-bottom: 20px;">
+                <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                <label class="form-check-label" for="terms" style="color: #666; font-size: 14px;">
+                    Aceito os <a href="#" style="color: #667eea; text-decoration: none;">Termos de Serviço</a>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-register" id="btn-submit">Cadastrar Estabelecimento</button>
+        </form>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const btnSubmit = document.getElementById('btn-submit');
+        const errorDiv = document.getElementById('error-message');
+
+        // Verificar se usuário está autenticado
+        if (!localStorage.getItem('access_token')) {
+            window.location.href = 'login.html';
+        }
+
+        // Máscara CNPJ
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 14) {
+                value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+                value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+                value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
+                value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Máscara CEP
+        document.getElementById('cep').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 8) {
+                value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Máscara Telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Buscar endereço pelo CEP
+        document.getElementById('cep').addEventListener('blur', async function(e) {
+            const cep = e.target.value.replace(/\D/g, '');
+            
+            if (cep.length === 8) {
+                try {
+                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    const data = await response.json();
+                    
+                    if (!data.erro) {
+                        document.getElementById('endereco').value = data.logradouro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    }
+                } catch (error) {
+                    console.error('Erro ao buscar CEP:', error);
+                }
+            }
+        });
+
+        document.querySelector('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                cnpj: document.getElementById('cnpj').value.replace(/\D/g, ''),
+                cep: document.getElementById('cep').value.replace(/\D/g, ''),
+                phone: document.getElementById('telefone').value.replace(/\D/g, ''),
+                adress: document.getElementById('endereco').value,
+                city: document.getElementById('cidade').value,
+                number: document.getElementById('numero').value,
+                state: document.getElementById('estado').value
+            };
+
+            errorDiv.innerHTML = '';
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
+
+            try {
+                const response = await fetchWithAuth('http://127.0.0.1:8001/api/establishment/', {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    errorDiv.innerHTML = `
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            Estabelecimento cadastrado com sucesso!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 1500);
+                } else {
+                    errorDiv.innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            ${data.detail || 'Erro ao cadastrar estabelecimento'}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                errorDiv.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Erro na conexão: ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            } finally {
+                btnSubmit.disabled = false;
+                btnSubmit.innerHTML = 'Cadastrar Estabelecimento';
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

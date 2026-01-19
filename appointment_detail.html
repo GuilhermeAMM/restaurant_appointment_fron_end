@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Agendamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+            color: #e5e7eb;
+            padding: 24px 16px;
+        }
+        .sidebar .brand {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar .nav-link {
+            color: #d1d5db;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .detail-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+        .field-group {
+            margin-bottom: 24px;
+        }
+        .field-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .field-value {
+            font-size: 16px;
+            color: #111827;
+            font-weight: 500;
+        }
+        .field-value.large {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .badge-status {
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .badge-confirmed { 
+            background: #dcfce7; 
+            color: #166534; 
+        }
+        .badge-pending { 
+            background: #fef9c3; 
+            color: #854d0e; 
+        }
+        .badge-cancelled { 
+            background: #fee2e2; 
+            color: #991b1b; 
+        }
+        .badge-payment {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .observation-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            color: #4b5563;
+            line-height: 1.6;
+            min-height: 80px;
+        }
+        .metadata-section {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .metadata-item {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        .metadata-item strong {
+            color: #374151;
+            font-weight: 600;
+        }
+        .btn-back {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-back:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+            color: #111827;
+        }
+        @media (max-width: 768px) {
+            .detail-card {
+                padding: 24px 20px;
+            }
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-md-3 col-lg-2 sidebar">
+                <div class="brand">Painel</div>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="home.html">Agendamentos</a>
+                    <a class="nav-link" href="#">Meus dados</a>
+                    <a class="nav-link" href="#">Dados do estabelecimento</a>
+                    <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
+                </nav>
+            </aside>
+
+            <main class="col-12 col-md-9 col-lg-10 p-4">
+                <div class="content-header">
+                    <div>
+                        <h4 class="mb-1">Detalhes do Agendamento</h4>
+                        <p class="text-muted mb-0">Visualize as informações completas do agendamento</p>
+                    </div>
+                    <button class="btn btn-back" onclick="goBack()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16" style="vertical-align: -2px;">
+                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                        </svg>
+                        Voltar
+                    </button>
+                </div>
+
+                <div class="detail-card">
+                    <div class="section-title">Informações Principais</div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="field-group">
+                                <div class="field-label">Cliente</div>
+                                <div class="field-value large" id="customer">Maria Silva Santos</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="field-group">
+                                <div class="field-label">Estabelecimento</div>
+                                <div class="field-value large" id="location">Clínica Vida e Saúde</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="field-group">
+                                <div class="field-label">Data e Hora</div>
+                                <div class="field-value" id="start_at">25 de Janeiro de 2026 às 14:30</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="field-group">
+                                <div class="field-label">Status</div>
+                                <div>
+                                    <span class="badge-status badge-confirmed" id="status">Confirmado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title mt-4">Detalhes Financeiros e Atendimento</div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="field-group">
+                                <div class="field-label">Valor</div>
+                                <div class="field-value large" style="color: #059669;" id="price">R$ 150,00</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="field-group">
+                                <div class="field-label">Forma de Pagamento</div>
+                                <div>
+                                    <span class="badge-payment" id="payment_method">Cartão de Crédito</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="field-group">
+                                <div class="field-label">Número de Pessoas</div>
+                                <div class="field-value" id="number_people">1 pessoa</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title mt-4">Observações</div>
+                    
+                    <div class="observation-box" id="observation">
+                        Paciente solicitou horário pela manhã devido a compromissos no período da tarde. Trazer exames anteriores para consulta.
+                    </div>
+
+                    <div class="metadata-section">
+                        <div class="section-title" style="border: none; padding-bottom: 8px; margin-bottom: 12px;">Metadados</div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="metadata-item">
+                                    <strong>Criado em:</strong> <span id="created_at">18/01/2026 às 10:30</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="metadata-item">
+                                    <strong>Última atualização:</strong> <span id="updated_at">19/01/2026 às 15:45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-back" onclick="goBack()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16" style="vertical-align: -2px;">
+                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                        </svg>
+                        Voltar
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Verificar autenticação
+        if (!localStorage.getItem('access_token')) {
+            window.location.href = 'login.html';
+        }
+
+        // Função para voltar
+        function goBack() {
+            window.history.back();
+        }
+
+        // Formatação de data (exemplo: "2026-01-25T14:30:00" -> "25 de Janeiro de 2026 às 14:30")
+        function formatDateTime(dateString) {
+            const date = new Date(dateString);
+            const options = { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            };
+            return date.toLocaleDateString('pt-BR', options).replace(',', ' às');
+        }
+
+        // Formatação de data simples (exemplo: "2026-01-18T10:30:00" -> "18/01/2026 às 10:30")
+        function formatDateTimeSimple(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${day}/${month}/${year} às ${hours}:${minutes}`;
+        }
+
+        // Formatação de moeda (exemplo: 150.50 -> "R$ 150,50")
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        }
+
+        // Formatação de status (retorna classe CSS apropriada)
+        function getStatusClass(status) {
+            const statusMap = {
+                'confirmed': 'badge-confirmed',
+                'pending': 'badge-pending',
+                'cancelled': 'badge-cancelled',
+                'confirmado': 'badge-confirmed',
+                'pendente': 'badge-pending',
+                'cancelado': 'badge-cancelled'
+            };
+            return statusMap[status.toLowerCase()] || 'badge-pending';
+        }
+
+        // Formatação de status (retorna texto em português)
+        function formatStatus(status) {
+            const statusMap = {
+                'confirmed': 'Confirmado',
+                'pending': 'Pendente',
+                'cancelled': 'Cancelado'
+            };
+            return statusMap[status.toLowerCase()] || status;
+        }
+
+        // Exemplo: Carregar dados do agendamento da API
+        async function loadAppointmentDetails() {
+            try {
+                // Obter ID da URL (exemplo: appointment_detail.html?id=123)
+                const urlParams = new URLSearchParams(window.location.search);
+                const appointmentId = urlParams.get('id');
+
+                if (!appointmentId) {
+                    console.error('ID do agendamento não encontrado na URL');
+                    return;
+                }
+
+                // Fazer requisição para API
+                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/appointments/${appointmentId}/`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Atualizar elementos da página com dados reais
+                    document.getElementById('customer').textContent = data.customer || '—';
+                    document.getElementById('location').textContent = data.location || '—';
+                    document.getElementById('start_at').textContent = data.start_at ? formatDateTime(data.start_at) : '—';
+                    
+                    const statusElement = document.getElementById('status');
+                    statusElement.textContent = formatStatus(data.status);
+                    statusElement.className = 'badge-status ' + getStatusClass(data.status);
+                    
+                    document.getElementById('price').textContent = data.price ? formatCurrency(data.price) : 'R$ 0,00';
+                    document.getElementById('payment_method').textContent = data.payment_method || '—';
+                    document.getElementById('number_people').textContent = data.number_people 
+                        ? `${data.number_people} ${data.number_people === 1 ? 'pessoa' : 'pessoas'}` 
+                        : '—';
+                    document.getElementById('observation').textContent = data.observation || '—';
+                    document.getElementById('created_at').textContent = data.created_at ? formatDateTimeSimple(data.created_at) : '—';
+                    document.getElementById('updated_at').textContent = data.updated_at ? formatDateTimeSimple(data.updated_at) : '—';
+                } else {
+                    console.error('Erro ao carregar agendamento:', data);
+                    alert('Erro ao carregar detalhes do agendamento');
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                alert('Erro ao conectar com o servidor');
+            }
+        }
+
+        // Carregar dados quando a página carregar
+        // Descomente a linha abaixo quando quiser integrar com a API:
+        // loadAppointmentDetails();
+    </script>
+</body>
+</html>
