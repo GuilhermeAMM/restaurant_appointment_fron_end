@@ -185,14 +185,18 @@
                         <div class="col-12 col-md-6">
                             <div class="field-group">
                                 <div class="field-label">Cliente</div>
-                                <div class="field-value large" id="customer">Maria Silva Santos</div>
+                                <div class="field-value large" id="customer">
+                                    <!-- Injection customer name -->
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="field-group">
                                 <div class="field-label">Estabelecimento</div>
-                                <div class="field-value large" id="location">Clínica Vida e Saúde</div>
+                                <div class="field-value large" id="location">
+                                    <!-- Injection establishment name -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -201,7 +205,9 @@
                         <div class="col-12 col-md-6">
                             <div class="field-group">
                                 <div class="field-label">Data e Hora</div>
-                                <div class="field-value" id="start_at">25 de Janeiro de 2026 às 14:30</div>
+                                <div class="field-value" id="start_at">
+                                   <!-- Injection date and hour -->
+                                </div>
                             </div>
                         </div>
 
@@ -209,7 +215,9 @@
                             <div class="field-group">
                                 <div class="field-label">Status</div>
                                 <div>
-                                    <span class="badge-status badge-confirmed" id="status">Confirmado</span>
+                                    <span class="badge-status badge-confirmed" id="status">
+                                        <!-- Injection status name -->
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +229,9 @@
                         <div class="col-12 col-md-4">
                             <div class="field-group">
                                 <div class="field-label">Valor</div>
-                                <div class="field-value large" style="color: #059669;" id="price">R$ 150,00</div>
+                                <div class="field-value large" style="color: #059669;" id="price">
+                                    <!-- Injection price -->
+                                </div>
                             </div>
                         </div>
 
@@ -229,7 +239,9 @@
                             <div class="field-group">
                                 <div class="field-label">Forma de Pagamento</div>
                                 <div>
-                                    <span class="badge-payment" id="payment_method">Cartão de Crédito</span>
+                                    <span class="badge-payment" id="payment_method">
+                                        <!-- Injection payment method -->
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +249,9 @@
                         <div class="col-12 col-md-4">
                             <div class="field-group">
                                 <div class="field-label">Número de Pessoas</div>
-                                <div class="field-value" id="number_people">1 pessoa</div>
+                                <div class="field-value" id="number_people">
+                                    <!-- Injection number people -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -245,7 +259,7 @@
                     <div class="section-title mt-4">Observações</div>
                     
                     <div class="observation-box" id="observation">
-                        Paciente solicitou horário pela manhã devido a compromissos no período da tarde. Trazer exames anteriores para consulta.
+                        <!-- Injection objservations -->
                     </div>
 
                     <div class="metadata-section">
@@ -325,24 +339,11 @@
         // Formatação de status (retorna classe CSS apropriada)
         function getStatusClass(status) {
             const statusMap = {
-                'confirmed': 'badge-confirmed',
-                'pending': 'badge-pending',
-                'cancelled': 'badge-cancelled',
-                'confirmado': 'badge-confirmed',
-                'pendente': 'badge-pending',
-                'cancelado': 'badge-cancelled'
+                'CONFIRMED': 'badge-confirmed',
+                'SCHEDULED': 'badge-pending',
+                'CANCELED': 'badge-cancelled',
             };
-            return statusMap[status.toLowerCase()] || 'badge-pending';
-        }
-
-        // Formatação de status (retorna texto em português)
-        function formatStatus(status) {
-            const statusMap = {
-                'confirmed': 'Confirmado',
-                'pending': 'Pendente',
-                'cancelled': 'Cancelado'
-            };
-            return statusMap[status.toLowerCase()] || status;
+            return statusMap[status] || 'badge-pending';
         }
 
         // Exemplo: Carregar dados do agendamento da API
@@ -358,21 +359,24 @@
                 }
 
                 // Fazer requisição para API
-                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/appointments/${appointmentId}/`);
+                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/appointment/${appointmentId}/`, {
+                    method: 'GET'
+                });
                 const data = await response.json();
+                console.log(data)
 
                 if (response.ok) {
                     // Atualizar elementos da página com dados reais
-                    document.getElementById('customer').textContent = data.customer || '—';
-                    document.getElementById('location').textContent = data.location || '—';
+                    document.getElementById('customer').textContent = data.customer_name || '—';
+                    document.getElementById('location').textContent = data.location_name || '—';
                     document.getElementById('start_at').textContent = data.start_at ? formatDateTime(data.start_at) : '—';
                     
                     const statusElement = document.getElementById('status');
-                    statusElement.textContent = formatStatus(data.status);
-                    statusElement.className = 'badge-status ' + getStatusClass(data.status);
+                    statusElement.className = 'badge-status '+ getStatusClass(data.status);
+                    statusElement.textContent = data.status_label;
                     
                     document.getElementById('price').textContent = data.price ? formatCurrency(data.price) : 'R$ 0,00';
-                    document.getElementById('payment_method').textContent = data.payment_method || '—';
+                    document.getElementById('payment_method').textContent = data.payment_method_label || '—';
                     document.getElementById('number_people').textContent = data.number_people 
                         ? `${data.number_people} ${data.number_people === 1 ? 'pessoa' : 'pessoas'}` 
                         : '—';
@@ -390,8 +394,7 @@
         }
 
         // Carregar dados quando a página carregar
-        // Descomente a linha abaixo quando quiser integrar com a API:
-        // loadAppointmentDetails();
+        loadAppointmentDetails();
     </script>
 </body>
 </html>

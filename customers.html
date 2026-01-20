@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
+	<title>Clientes</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<style>
 		body {
@@ -53,18 +53,21 @@
 			border-bottom: none;
 			color: #4b5563;
 			font-weight: 600;
+            text-align: center;
+
 		}
 		.table tbody tr:hover {
 			background: #f9fafb;
 		}
+        .table tbody tr{
+            text-align: center;
+        }
 		.badge-status {
 			padding: 6px 10px;
 			border-radius: 999px;
 			font-size: 12px;
 		}
-		.badge-confirmed { background: #dcfce7; color: #166534; }
-		.badge-pending { background: #fef9c3; color: #854d0e; }
-		.badge-cancelled { background: #fee2e2; color: #991b1b; }
+
 	</style>
 </head>
 <body>
@@ -73,8 +76,7 @@
 			<aside class="col-12 col-md-3 col-lg-2 sidebar">
                 <div class="brand">Painel</div>
                 <nav class="nav flex-column">
-					<a class="nav-link" href="home.html">Home</a>
-					<a class="nav-link" href="customers.html">Meus Clientes</a>
+                    <a class="nav-link" href="home.html">Home</a>
                     <a class="nav-link" href="register_customer.html">Cadastrar Cliente</a>
                     <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
                 </nav>
@@ -83,10 +85,10 @@
 			<main class="col-12 col-md-9 col-lg-10 p-4">
 				<div class="content-header">
 					<div>
-						<h4 class="mb-1">Agendamentos</h4>
-						<p class="text-muted mb-0">Visualize e gerencie os agendamentos</p>
+						<h4 class="mb-1">Clientes Cadastrados</h4>
+						<p class="text-muted mb-0">Visualize todos os clientes</p>
 					</div>
-					<button class="btn btn-primary" onclick="createAppointment()">Novo agendamento</button>
+					<button class="btn btn-primary" onclick="addCustomer()">Adicionar Cliente</button>
 				</div>
 
 				<div class="table-card">
@@ -94,15 +96,14 @@
 						<table class="table align-middle">
 							<thead>
 								<tr>
-									<th>Cliente</th>
-									<th>N° de pessoas</th>
-									<th>Data</th>
-									<th>Status</th>
-									<th class="text-end">Acoes</th>
+									<th>Nome Completo</th>
+									<th>Telefone</th>
+									<th>Email</th>
+									<th>Data de Cadastro</th>
 								</tr>
 							</thead>
 							<tbody>
-								<!-- insert values with JS -->
+                                <!-- Insert customers with JS -->
 							</tbody>
 						</table>
 					</div>
@@ -134,47 +135,25 @@
             return `${day}/${month}/${year} ${hours}:${minutes}`;
         }
 
-        function getStatusConfig(status) {
-            const configs = {
-                'CONFIRMED': { class: 'badge-confirmed', text: 'Confirmado' },
-                'SCHEDULED': { class: 'badge-pending', text: 'Agendado' },
-                'CANCELED': { class: 'badge-cancelled', text: 'Cancelado' }
-            };
-            
-            return configs[status] || { class: 'badge-pending', text: text };
-        }
-
         // ==================== RENDERIZAÇÃO ====================
-        function renderAppointmentRow(appointment) {
-            const statusConfig = getStatusConfig(appointment.status, appointment.status_label);
+        function renderCustomerRow(customer) {
             
             return `
                 <tr>
-                    <td>${appointment.customer_name || '—'}</td>
-                    <td>${appointment.number_people || '—'}</td>
-                    <td>${formatDateTime(appointment.start_at)}</td>
-                    <td>
-                        <span class="badge-status ${statusConfig.class}">
-                            ${statusConfig.text}
-                        </span>
-                    </td>
+                    <td>${customer.full_name || '—'}</td>
+                    <td>${customer.phone || '—'}</td>
+                    <td>${customer.email || '—'}</td>
+                    <td>${formatDateTime(customer.created_at)}</td>
                     <td class="text-end">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="viewAppointment(${appointment.id})">
-                            Ver
+                        <button class="btn btn-sm btn-outline-secondary" onclick="viewCustomer(${customer.id})">
+                            Ver Agendamentos
                         </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="cancelAppointment(${appointment.id})">
-                            Cancelar
+                        <button class="btn btn-sm btn-outline-warning" onclick="updateCustomer(${customer.id})">
+                            Atualizar
                         </button>
-                    </td>
-                </tr>
-            `;
-        }
-
-        function renderEmptyState(message) {
-            return `
-                <tr>
-                    <td colspan="5" class="text-center text-muted py-4">
-                        ${message}
+                        <button class="btn btn-sm btn-outline-danger" onclick="excludeCustomer(${customer.id})">
+                            Excluir
+                        </button>
                     </td>
                 </tr>
             `;
@@ -196,62 +175,51 @@
         }
 
         // ==================== AÇÕES ====================
-        function viewAppointment(appointmentId) {
-            window.location.href = `appointment_detail.html?id=${appointmentId}`;
+        function viewCustomer(customerId) {
+            window.location.href = `home.html?id=${customerId}`;
         }
 
-		function createAppointment(){
-			window.location.href = `register_appointment.html`
-		}
+        function updateCustomer(customerId) {
+            window.location.href = `register_customer.html?id=${customerId}`
+        }
 
-        async function cancelAppointment(appointmentId) {
-            const confirmed = confirm('Tem certeza que deseja cancelar este agendamento?');
+        function addCustomer() {
+            window.location.href = `register_customer.html`
+        }
+
+        async function excludeCustomer(customerId) {
+            const confirmed = confirm('Tem certeza que deseja excluir este cliente?');
             if (!confirmed) return;
 
             try {
-                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/appointment/${appointmentId}/`, {
-                    method: 'PATCH',
-                    body: JSON.stringify({ status: 'cancelled' })
+                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/customer/${customerId}/`, {
+                    method: 'DELETE',
                 });
 
                 if (response.ok) {
-                    alert('Agendamento cancelado com sucesso!');
-                    loadAppointments();
+                    alert('Cliente excluido com sucesso!');
+                    loadCustomers();
                 } else {
-                    alert('Erro ao cancelar agendamento');
+                    alert('Erro ao excluir cliente');
                 }
             } catch (error) {
-                console.error('Erro ao cancelar agendamento:', error);
-                alert('Erro ao cancelar agendamento');
+                console.error('Erro ao excluir cliente:', error);
+                alert('Erro ao excluir cliente');
             }
         }
 
         // ==================== CARREGAMENTO ====================
-        async function loadAppointments() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const customerId = urlParams.get('id');
-			console.log(customerId)
-
-			let urlSearch 
-			if (!customerId) {
-				urlSearch = "http://127.0.0.1:8001/api/appointment/"
-				
-			}
-			else {
-				 urlSearch = `http://127.0.0.1:8001/api/filter-appointment-customer/${customerId}/`;	
-			}
-			
-			console.log(urlSearch)
+        async function loadCustomers() {
             try {
-                const response = await fetchWithAuth(urlSearch);
-                const appointments = await response.json();
+                const response = await fetchWithAuth('http://127.0.0.1:8001/api/customer/');
+                const customers = await response.json();
 
-                if (!appointments || appointments.length === 0) {
-                    updateTable(renderEmptyState('Nenhum agendamento encontrado'));
+                if (!customers || customers.length === 0) {
+                    updateTable(renderEmptyState('Nenhum cliente cadastrado'));
                     return;
                 }
 
-                const rowsHtml = appointments.map(renderAppointmentRow).join('');
+                const rowsHtml = customers.map(renderCustomerRow).join('');
                 updateTable(rowsHtml);
 
             } catch (error) {
@@ -261,7 +229,7 @@
         }
 
         // Inicializar
-        loadAppointments();
+        loadCustomers();
     </script>
 </body>
 </html>
