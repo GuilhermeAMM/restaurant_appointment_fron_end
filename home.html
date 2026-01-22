@@ -46,14 +46,15 @@
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 			padding: 20px;
 		}
+        .table-responsive {
+            max-height: 80vh; /* Altura máxima antes de criar scroll */
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
 		.table thead {
 			background: #f8fafc;
 		}
-		.table thead th {
-			border-bottom: none;
-			color: #4b5563;
-			font-weight: 600;
-		}
+		
 		.table tbody tr:hover {
 			background: #f9fafb;
 		}
@@ -73,9 +74,9 @@
 			<aside class="col-12 col-md-3 col-lg-2 sidebar">
                 <div class="brand">Painel</div>
                 <nav class="nav flex-column">
-					<a class="nav-link" href="home.html">Home</a>
+					<a class="nav-link" href="home.html">Agendamentos</a>
 					<a class="nav-link" href="customers.html">Meus Clientes</a>
-                    <a class="nav-link" href="register_customer.html">Cadastrar Cliente</a>
+                    <a class="nav-link" href="register_customer.html?method=post">Cadastrar Cliente</a>
                     <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
                 </nav>
             </aside>
@@ -162,6 +163,9 @@
                         <button class="btn btn-sm btn-outline-secondary" onclick="viewAppointment(${appointment.id})">
                             Ver
                         </button>
+                        <button class="btn btn-sm btn-outline-warning" onclick="updateAppointment(${appointment.id})">
+                            Atualizar
+                        </button>
                         <button class="btn btn-sm btn-outline-danger" onclick="cancelAppointment(${appointment.id})">
                             Cancelar
                         </button>
@@ -201,8 +205,12 @@
         }
 
 		function createAppointment(){
-			window.location.href = `register_appointment.html`
+			window.location.href = `register_appointment.html?method=post`
 		}
+
+        function updateAppointment(customerId) {
+            window.location.href = `register_appointment.html?id=${customerId}&method=patch`
+        }
 
         async function cancelAppointment(appointmentId) {
             const confirmed = confirm('Tem certeza que deseja cancelar este agendamento?');
@@ -230,7 +238,6 @@
         async function loadAppointments() {
 			const urlParams = new URLSearchParams(window.location.search);
 			const customerId = urlParams.get('id');
-			console.log(customerId)
 
 			let urlSearch 
 			if (!customerId) {
@@ -240,8 +247,7 @@
 			else {
 				 urlSearch = `http://127.0.0.1:8001/api/filter-appointment-customer/${customerId}/`;	
 			}
-			
-			console.log(urlSearch)
+		
             try {
                 const response = await fetchWithAuth(urlSearch);
                 const appointments = await response.json();

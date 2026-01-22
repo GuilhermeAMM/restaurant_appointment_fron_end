@@ -46,16 +46,26 @@
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 			padding: 20px;
 		}
+
+        .table-responsive {
+            max-height: 80vh; /* Altura máxima antes de criar scroll */
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
 		.table thead {
 			background: #f8fafc;
 		}
-		.table thead th {
+
+        .table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
 			border-bottom: none;
 			color: #4b5563;
 			font-weight: 600;
             text-align: center;
-
 		}
+
 		.table tbody tr:hover {
 			background: #f9fafb;
 		}
@@ -76,7 +86,7 @@
 			<aside class="col-12 col-md-3 col-lg-2 sidebar">
                 <div class="brand">Painel</div>
                 <nav class="nav flex-column">
-                    <a class="nav-link" href="home.html">Home</a>
+                    <a class="nav-link" href="home.html">Agendamentos</a>
                     <a class="nav-link" href="register_customer.html">Cadastrar Cliente</a>
                     <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
                 </nav>
@@ -176,15 +186,15 @@
 
         // ==================== AÇÕES ====================
         function viewCustomer(customerId) {
-            window.location.href = `home.html?id=${customerId}`;
+            window.location.href = `home.html?id=${customerId}&`;
         }
 
         function updateCustomer(customerId) {
-            window.location.href = `register_customer.html?id=${customerId}`
+            window.location.href = `register_customer.html?id=${customerId}&method=patch`
         }
 
         function addCustomer() {
-            window.location.href = `register_customer.html`
+            window.location.href = `register_customer.html?method=post`
         }
 
         async function excludeCustomer(customerId) {
