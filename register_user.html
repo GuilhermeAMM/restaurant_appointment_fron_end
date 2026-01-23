@@ -171,10 +171,17 @@
         </div>
     </div>
 
+    <script src="auth.js"></script>
     <script>
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+            window.location.href = 'login.html';
+        }
+
         const form = document.getElementById('register-form');
         const btnSubmit = document.getElementById('btn-submit');
         const errorDiv = document.getElementById('error-message');
+
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -205,10 +212,10 @@
 
             btnSubmit.disabled = true;
             btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
-
+            
             try {
                 const response = await fetch('http://127.0.0.1:8001/api/register/', {
-                    method: 'POST',
+                method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
                     },
