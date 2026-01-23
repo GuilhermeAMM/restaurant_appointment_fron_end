@@ -77,6 +77,7 @@
 					<a class="nav-link" href="home.html">Agendamentos</a>
 					<a class="nav-link" href="customers.html">Meus Clientes</a>
                     <a class="nav-link" href="register_customer.html?method=post">Cadastrar Cliente</a>
+                    <a class="nav-link" href="register_user.html?method=patch">Atualizar usuário</a>
                     <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
                 </nav>
             </aside>
@@ -245,7 +246,7 @@
 				
 			}
 			else {
-				 urlSearch = `http://127.0.0.1:8001/api/filter-appointment-customer/${customerId}/`;	
+				urlSearch = `http://127.0.0.1:8001/api/filter-appointment-customer/${customerId}/`;	
 			}
 		
             try {

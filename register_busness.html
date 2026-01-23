@@ -257,7 +257,7 @@
                     const data = await response.json();
                     
                     if (!data.erro) {
-                        document.getElementById('endereco').value = data.logradouro;
+                        document.getElementById('endereco').value = `${data.logradouro} ${data.bairro}`;
                         document.getElementById('cidade').value = data.localidade;
                         document.getElementById('estado').value = data.uf;
                     }
