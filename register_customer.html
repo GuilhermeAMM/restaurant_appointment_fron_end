@@ -1,286 +1,296 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastrar Cliente</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .register-customer-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 420px;
-        }
-        .register-customer-container h2 {
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .register-customer-subtitle {
-            color: #999;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 14px;
-        }
-        .form-label {
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .form-control {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
-            background-color: #fff;
-        }
-        .form-control::placeholder {
-            color: #bbb;
-        }
-        .btn-register-customer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            color: white;
-            width: 100%;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-register-customer:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-        .btn-register-customer:active {
-            transform: translateY(0);
-        }
-        .btn-register-customer:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-        .signup-link {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #f0f0f0;
-            color: #666;
-            font-size: 14px;
-        }
-        .signup-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-        .input-group-mb {
-            margin-bottom: 20px;
-        }
-        .alert {
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .spinner-border {
-            width: 1rem;
-            height: 1rem;
-            margin-right: 8px;
-        }
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .register-customer-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0px 10px 40px rgb(149, 149, 149);
+        padding: 50px 40px;
+        width: 100%;
+        max-width: 420px;
+      }
+      .register-customer-container h2 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .register-customer-subtitle {
+        color: #999;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 14px;
+      }
+      .form-label {
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+      .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+        background-color: #fff;
+      }
+      .form-control::placeholder {
+        color: #bbb;
+      }
+      .btn-register-customer {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        color: white;
+        width: 100%;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .btn-register-customer:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        color: white;
+      }
+      .btn-register-customer:active {
+        transform: translateY(0);
+      }
+      .btn-register-customer:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+      .signup-link {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #f0f0f0;
+        color: #666;
+        font-size: 14px;
+      }
+      .signup-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .signup-link a:hover {
+        text-decoration: underline;
+      }
+      .input-group-mb {
+        margin-bottom: 20px;
+      }
+      .alert {
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .spinner-border {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 8px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="register-customer-container">
-        <h2>Cadastrar Cliente</h2>
-        <p class="register-customer-subtitle">Cadastre seus clientes aqui</p>
+      <h2>Cadastrar Cliente</h2>
+      <p class="register-customer-subtitle">Cadastre seus clientes aqui</p>
 
-        <div id="error-message"></div>
+      <div id="error-message"></div>
 
-        <form id="register-customer-form">
-            <div class="input-group-mb">
-                <label for="full_name" class="form-label">Nome completo</label>
-                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Nome Completo" required>
-            </div>
+      <form id="register-customer-form">
+        <div class="input-group-mb">
+          <label for="full_name" class="form-label">Nome completo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="full_name"
+            name="full_name"
+            placeholder="Nome Completo"
+            required
+          />
+        </div>
 
-            <div class="input-group-mb">
-                <label for="phone" class="form-label">Telefone</label>
-                <input type="phone" class="form-control" id="phone" name="phone" placeholder="(00) 12345-6789" required>
-            </div>
+        <div class="input-group-mb">
+          <label for="phone" class="form-label">Telefone</label>
+          <input
+            type="phone"
+            class="form-control"
+            id="phone"
+            name="phone"
+            placeholder="(00) 12345-6789"
+            required
+          />
+        </div>
 
-            <div class="input-group-mb">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="cliente@exemplo.com" required>
-            </div>
+        <div class="input-group-mb">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="cliente@exemplo.com"
+            required
+          />
+        </div>
 
-            <button type="submit" class="btn btn-register-customer" id="btn-submit">Cadastrar Cliente</button>
-
-        </form>
+        <button type="submit" class="btn btn-register-customer" id="btn-submit">
+          Cadastrar Cliente
+        </button>
+      </form>
     </div>
 
     <script src="auth.js"></script>
     <script>
+      const accessToken = localStorage.getItem("access_token");
+      if (!accessToken) {
+        window.location.href = "login.html";
+      }
 
-        const accessToken = localStorage.getItem('access_token');
-        if (!accessToken) {
-            window.location.href = 'login.html';
-        }
-        
-        const form = document.getElementById('register-customer-form');
-        const btnSubmit = document.getElementById('btn-submit');
-        const errorDiv = document.getElementById('error-message');
-        const urlParams = new URLSearchParams(window.location.search);
-		const customerId = urlParams.get('id');
-        const methodValue = urlParams.get('method');
-        const url = customerId? `http://127.0.0.1:8001/api/customer/${customerId}/`: `http://127.0.0.1:8001/api/customer/`;
-        btnSubmit.innerHTML = customerId? "Atualizar Cliente":'Cadastrar Cliente';
+      const form = document.getElementById("register-customer-form");
+      const btnSubmit = document.getElementById("btn-submit");
+      const errorDiv = document.getElementById("error-message");
+      const urlParams = new URLSearchParams(window.location.search);
+      const customerId = urlParams.get("id");
+      const methodValue = urlParams.get("method");
+      const url = customerId
+        ? `https://testes.globalhost.app.br/api/customer/${customerId}/`
+        : `https://testes.globalhost.app.br/api/customer/`;
+      btnSubmit.innerHTML = customerId
+        ? "Atualizar Cliente"
+        : "Cadastrar Cliente";
 
-        function getMethod(method){
-            const methods = {
-                patch:"PATCH",
-                post: 'POST',   
-            }
-            return methods[method]
-        }
+      function getMethod(method) {
+        const methods = {
+          patch: "PATCH",
+          post: "POST",
+        };
+        return methods[method];
+      }
 
-        async function loadCustomerData() {
-            try {
-                const response = await fetchWithAuth(url);
-                const customerData = await response.json();
-                
-                console.log(customerData);
-                document.getElementById("full_name").value = customerData.full_name || '';
-                document.getElementById("phone").value = customerData.phone || '';
-                document.getElementById("email").value = customerData.email || '';
-            }
-            catch (error) { 
-                errorDiv.innerHTML = `
+      async function loadCustomerData() {
+        try {
+          const response = await fetchWithAuth(url);
+          const customerData = await response.json();
+
+          console.log(customerData);
+          document.getElementById("full_name").value =
+            customerData.full_name || "";
+          document.getElementById("phone").value = customerData.phone || "";
+          document.getElementById("email").value = customerData.email || "";
+        } catch (error) {
+          errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Erro ao carregar cliente: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>`;
-            }
         }
+      }
 
-        // Carregar dados se for edição
-        if (customerId) {
-            loadCustomerData();
+      // Carregar dados se for edição
+      if (customerId) {
+        loadCustomerData();
+      }
+
+      // Máscara Telefone
+      document.getElementById("phone").addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.length <= 11) {
+          value = value.replace(/^(\d{2})(\d)/, "($1) $2");
+          value = value.replace(/(\d{5})(\d)/, "$1-$2");
         }
+        e.target.value = value;
+      });
 
-        // Máscara Telefone
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length <= 11) {
-                value = value.replace(/^(\d{2})(\d)/, '($1) $2');
-                value = value.replace(/(\d{5})(\d)/, '$1-$2');
-            }
-            e.target.value = value;
-        });
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        const full_name = document.getElementById("full_name").value;
+        const phone = document.getElementById("phone").value.replace(/\D/g, "");
+        const email = document.getElementById("email").value;
 
-            const full_name = document.getElementById('full_name').value;
-            const phone = document.getElementById('phone').value.replace(/\D/g, '');
-            const email = document.getElementById('email').value;
+        errorDiv.innerHTML = "";
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span class="spinner-border"></span>Entrando...';
 
-            errorDiv.innerHTML = '';
-            btnSubmit.disabled = true;
-            btnSubmit.innerHTML = '<span class="spinner-border"></span>Entrando...';
-            
-        
-        async function sendData(){
-            const method = getMethod(methodValue)
+        async function sendData() {
+          const method = getMethod(methodValue);
 
-            try {
-                const response = await fetchWithAuth(url, {
-                    method: method,
-                    body: JSON.stringify({
-                        full_name: full_name,
-                        phone: phone,
-                        email: email,
-                    })
-                });
+          try {
+            const response = await fetchWithAuth(url, {
+              method: method,
+              body: JSON.stringify({
+                full_name: full_name,
+                phone: phone,
+                email: email,
+              }),
+            });
 
-                const data = await response.json();
+            const data = await response.json();
 
-                if (response.ok) {
-                    errorDiv.innerHTML = `
+            if (response.ok) {
+              errorDiv.innerHTML = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Cliente ${customerId ? 'atualizado' : 'cadastrado'} com sucesso!
+                        Cliente ${customerId ? "atualizado" : "cadastrado"} com sucesso!
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                     `;
 
-                    setTimeout(() => {
-                        window.location.href = 'home.html';
-                    }, 1000);
-                } else {
-                    errorDiv.innerHTML = `
+              setTimeout(() => {
+                window.location.href = "home.html";
+              }, 1000);
+            } else {
+              errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${data.detail || 'Dados incorretos'}
+                            ${data.detail || "Dados incorretos"}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
-                }
-            } catch (error) {
-                errorDiv.innerHTML = `
+            }
+          } catch (error) {
+            errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Erro na conexão: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-            } finally {
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = customerId? "Atualizar Cliente":'Cadastrar Cliente';
-            }
+          } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.innerHTML = customerId
+              ? "Atualizar Cliente"
+              : "Cadastrar Cliente";
+          }
         }
-        sendData()
-    });  
+        sendData();
+      });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

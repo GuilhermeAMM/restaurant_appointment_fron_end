@@ -1,158 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<style>
-		body {
-			background: #f4f6fb;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		}
-		.sidebar {
-			min-height: 100vh;
-			background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
-			color: #e5e7eb;
-			padding: 24px 16px;
-		}
-		.sidebar .brand {
-			font-weight: 700;
-			font-size: 18px;
-			margin-bottom: 32px;
-			letter-spacing: 0.5px;
-		}
-		.sidebar .nav-link {
-			color: #d1d5db;
-			border-radius: 8px;
-			padding: 10px 12px;
-			margin-bottom: 8px;
-			transition: all 0.2s ease;
-		}
-		.sidebar .nav-link:hover,
-		.sidebar .nav-link.active {
-			background: rgba(255, 255, 255, 0.08);
-			color: #fff;
-		}
-		.content-header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			margin-bottom: 24px;
-		}
-		.table-card {
-			background: #fff;
-			border-radius: 12px;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-			padding: 20px;
-		}
-        .table-responsive {
-            max-height: 80vh; /* Altura máxima antes de criar scroll */
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-		.table thead {
-			background: #f8fafc;
-		}
-		
-		.table tbody tr:hover {
-			background: #f9fafb;
-		}
-		.badge-status {
-			padding: 6px 10px;
-			border-radius: 999px;
-			font-size: 12px;
-		}
-		.badge-confirmed { background: #dcfce7; color: #166534; }
-		.badge-pending { background: #fef9c3; color: #854d0e; }
-		.badge-cancelled { background: #fee2e2; color: #991b1b; }
-	</style>
-</head>
-<body>
-	<div class="container-fluid">
-		<div class="row">
-			<aside class="col-12 col-md-3 col-lg-2 sidebar">
-                <div class="brand">Painel</div>
-                <nav class="nav flex-column">
-					<a class="nav-link" href="home.html">Agendamentos</a>
-					<a class="nav-link" href="customers.html">Meus Clientes</a>
-                    <a class="nav-link" href="register_customer.html?method=post">Cadastrar Cliente</a>
-                    <a class="nav-link text-danger" href="#" onclick="logout(); return false;">Sair</a>
-                </nav>
-            </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <aside class="col-12 col-md-3 col-lg-2 sidebar">
+          <div>
+            <div class="brand">Painel</div>
+            <nav class="nav flex-column">
+              <a class="nav-link" href="home.html"
+                ><i class="fa-solid fa-address-book"></i>Agendamentos</a
+              >
+              <a class="nav-link" href="customers.html"
+                ><i class="fa-solid fa-users"></i>Meus Clientes</a
+              >
+              <a class="nav-link" href="register_customer.html?method=post"
+                ><i class="fa-solid fa-address-card"></i>Cadastrar Cliente</a
+              >
+              <a
+                class="nav-link text-danger"
+                href="#"
+                onclick="
+                  logout();
+                  return false;
+                "
+                >Sair</a
+              >
+            </nav>
+          </div>
+          <div class="div-logo">
+            <span data-component="/head.html"></span>
+          </div>
+        </aside>
 
-			<main class="col-12 col-md-9 col-lg-10 p-4">
-				<div class="content-header">
-					<div>
-						<h4 class="mb-1">Agendamentos</h4>
-						<p class="text-muted mb-0">Visualize e gerencie os agendamentos</p>
-					</div>
-					<button class="btn btn-primary" onclick="createAppointment()">Novo agendamento</button>
-				</div>
+        <main class="col-12 col-md-9 col-lg-10 p-4">
+          <div class="content-header">
+            <div>
+              <h4 class="mb-1">Agendamentos</h4>
+              <p class="text-muted mb-0">
+                Visualize e gerencie os agendamentos
+              </p>
+            </div>
+            <button class="btn btn-primary" onclick="createAppointment()">
+              Novo agendamento
+            </button>
+          </div>
 
-				<div class="table-card">
-					<div class="table-responsive">
-						<table class="table align-middle">
-							<thead>
-								<tr>
-									<th>Cliente</th>
-									<th>N° de pessoas</th>
-									<th>Data</th>
-									<th>Status</th>
-									<th class="text-end">Acoes</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- insert values with JS -->
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</main>
-		</div>
-	</div>
+          <div class="table-card">
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>N° de pessoas</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th class="text-end">Acoes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- insert values with JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+        <footer class="footer">© 2026. Todos os direitos reservados.</footer>
+      </div>
+    </div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
     <script>
-        // ==================== AUTENTICAÇÃO ====================
-        const accessToken = localStorage.getItem('access_token');
-        if (!accessToken) {
-            window.location.href = 'login.html';
-        }
+      // ==================== AUTENTICAÇÃO ====================
+      const accessToken = localStorage.getItem("access_token");
+      if (!accessToken) {
+        window.location.href = "login.html";
+      }
 
-        // ==================== FORMATAÇÃO ====================
-        function formatDateTime(isoString) {
-            if (!isoString) return '—';
-            
-            const date = new Date(isoString);
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
-            
-            return `${day}/${month}/${year} ${hours}:${minutes}`;
-        }
+      // ==================== FORMATAÇÃO ====================
+      function formatDateTime(isoString) {
+        if (!isoString) return "—";
 
-        function getStatusConfig(status) {
-            const configs = {
-                'CONFIRMED': { class: 'badge-confirmed', text: 'Confirmado' },
-                'SCHEDULED': { class: 'badge-pending', text: 'Agendado' },
-                'CANCELED': { class: 'badge-cancelled', text: 'Cancelado' }
-            };
-            
-            return configs[status] || { class: 'badge-pending', text: text };
-        }
+        const date = new Date(isoString);
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
 
-        // ==================== RENDERIZAÇÃO ====================
-        function renderAppointmentRow(appointment) {
-            const statusConfig = getStatusConfig(appointment.status, appointment.status_label);
-            
-            return `
+        return `${day}/${month}/${year} ${hours}:${minutes}`;
+      }
+
+      function getStatusConfig(status) {
+        const configs = {
+          CONFIRMED: { class: "badge-confirmed", text: "Confirmado" },
+          SCHEDULED: { class: "badge-pending", text: "Agendado" },
+          CANCELED: { class: "badge-cancelled", text: "Cancelado" },
+        };
+
+        return configs[status] || { class: "badge-pending", text: text };
+      }
+
+      // ==================== RENDERIZAÇÃO ====================
+      function renderAppointmentRow(appointment) {
+        const statusConfig = getStatusConfig(
+          appointment.status,
+          appointment.status_label,
+        );
+
+        return `
                 <tr>
-                    <td>${appointment.customer_name || '—'}</td>
-                    <td>${appointment.number_people || '—'}</td>
+                    <td>${appointment.customer_name || "—"}</td>
+                    <td>${appointment.number_people || "—"}</td>
                     <td>${formatDateTime(appointment.start_at)}</td>
                     <td>
                         <span class="badge-status ${statusConfig.class}">
@@ -172,102 +136,107 @@
                     </td>
                 </tr>
             `;
-        }
+      }
 
-        function renderEmptyState(message) {
-            return `
+      function renderEmptyState(message) {
+        return `
                 <tr>
                     <td colspan="5" class="text-center text-muted py-4">
                         ${message}
                     </td>
                 </tr>
             `;
-        }
+      }
 
-        function renderErrorState(message) {
-            return `
+      function renderErrorState(message) {
+        return `
                 <tr>
                     <td colspan="5" class="text-center text-danger py-4">
                         ${message}
                     </td>
                 </tr>
             `;
+      }
+
+      function updateTable(htmlContent) {
+        const tbody = document.querySelector("table tbody");
+        tbody.innerHTML = htmlContent;
+      }
+
+      // ==================== AÇÕES ====================
+      function viewAppointment(appointmentId) {
+        window.location.href = `appointment_detail.html?id=${appointmentId}`;
+      }
+
+      function createAppointment() {
+        window.location.href = `register_appointment.html?method=post`;
+      }
+
+      function updateAppointment(customerId) {
+        window.location.href = `register_appointment.html?id=${customerId}&method=patch`;
+      }
+
+      async function cancelAppointment(appointmentId) {
+        const confirmed = confirm(
+          "Tem certeza que deseja cancelar este agendamento?",
+        );
+        if (!confirmed) return;
+
+        try {
+          const response = await fetchWithAuth(
+            `testes.globalhost.app.br/api/appointment/${appointmentId}/`,
+            {
+              method: "PATCH",
+              body: JSON.stringify({ status: "cancelled" }),
+            },
+          );
+
+          if (response.ok) {
+            alert("Agendamento cancelado com sucesso!");
+            loadAppointments();
+          } else {
+            alert("Erro ao cancelar agendamento");
+          }
+        } catch (error) {
+          console.error("Erro ao cancelar agendamento:", error);
+          alert("Erro ao cancelar agendamento");
+        }
+      }
+
+      // ==================== CARREGAMENTO ====================
+      async function loadAppointments() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get("id");
+
+        let urlSearch;
+        if (!customerId) {
+          urlSearch = "https://testes.globalhost.app.br/api/appointment/";
+        } else {
+          urlSearch = `https://testes.globalhost.app.br/api/filter-appointment-customer/${customerId}/`;
         }
 
-        function updateTable(htmlContent) {
-            const tbody = document.querySelector('table tbody');
-            tbody.innerHTML = htmlContent;
+        try {
+          const response = await fetchWithAuth(urlSearch);
+          const appointments = await response.json();
+
+          if (!appointments || appointments.length === 0) {
+            updateTable(renderEmptyState("Nenhum agendamento encontrado"));
+            return;
+          }
+
+          const rowsHtml = appointments.map(renderAppointmentRow).join("");
+          updateTable(rowsHtml);
+        } catch (error) {
+          console.error("Erro ao carregar agendamentos:", error);
+          updateTable(
+            renderErrorState("Erro ao carregar agendamentos. Tente novamente."),
+          );
         }
+      }
 
-        // ==================== AÇÕES ====================
-        function viewAppointment(appointmentId) {
-            window.location.href = `appointment_detail.html?id=${appointmentId}`;
-        }
-
-		function createAppointment(){
-			window.location.href = `register_appointment.html?method=post`
-		}
-
-        function updateAppointment(customerId) {
-            window.location.href = `register_appointment.html?id=${customerId}&method=patch`
-        }
-
-        async function cancelAppointment(appointmentId) {
-            const confirmed = confirm('Tem certeza que deseja cancelar este agendamento?');
-            if (!confirmed) return;
-
-            try {
-                const response = await fetchWithAuth(`http://127.0.0.1:8001/api/appointment/${appointmentId}/`, {
-                    method: 'PATCH',
-                    body: JSON.stringify({ status: 'cancelled' })
-                });
-
-                if (response.ok) {
-                    alert('Agendamento cancelado com sucesso!');
-                    loadAppointments();
-                } else {
-                    alert('Erro ao cancelar agendamento');
-                }
-            } catch (error) {
-                console.error('Erro ao cancelar agendamento:', error);
-                alert('Erro ao cancelar agendamento');
-            }
-        }
-
-        // ==================== CARREGAMENTO ====================
-        async function loadAppointments() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const customerId = urlParams.get('id');
-
-			let urlSearch 
-			if (!customerId) {
-				urlSearch = "http://127.0.0.1:8001/api/appointment/"
-				
-			}
-			else {
-				 urlSearch = `http://127.0.0.1:8001/api/filter-appointment-customer/${customerId}/`;	
-			}
-		
-            try {
-                const response = await fetchWithAuth(urlSearch);
-                const appointments = await response.json();
-
-                if (!appointments || appointments.length === 0) {
-                    updateTable(renderEmptyState('Nenhum agendamento encontrado'));
-                    return;
-                }
-
-                const rowsHtml = appointments.map(renderAppointmentRow).join('');
-                updateTable(rowsHtml);
-
-            } catch (error) {
-                console.error('Erro ao carregar agendamentos:', error);
-                updateTable(renderErrorState('Erro ao carregar agendamentos. Tente novamente.'));
-            }
-        }
-
-        // Inicializar
-        loadAppointments();
+      // Inicializar
+      loadAppointments();
     </script>
-</body>
+    <script src="assets/js/scripts.js"></script>
+  </body>
 </html>

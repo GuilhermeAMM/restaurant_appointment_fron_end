@@ -1,261 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Usuário</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px 0;
-        }
-        .register-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .register-container h2 {
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .register-subtitle {
-            color: #999;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 14px;
-        }
-        .form-label {
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .form-control {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 12px 15px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
-            background-color: #fff;
-        }
-        .form-control::placeholder {
-            color: #bbb;
-        }
-        .btn-register {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            color: white;
-            width: 100%;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-        .btn-register:active {
-            transform: translateY(0);
-        }
-        .login-link {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #f0f0f0;
-            color: #666;
-            font-size: 14px;
-        }
-        .login-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        .input-group-mb {
-            margin-bottom: 20px;
-        }
+      body {
+        background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px 0;
+      }
+      .register-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0px 10px 40px rgb(149, 149, 149);
+        padding: 50px 40px;
+        width: 100%;
+        max-width: 600px;
+      }
+      .register-container h2 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .register-subtitle {
+        color: #999;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 14px;
+      }
+      .form-label {
+        color: #333;
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+      .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+        background-color: #fff;
+      }
+      .form-control::placeholder {
+        color: #bbb;
+      }
+      .btn-register {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        color: white;
+        width: 100%;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+      }
+      .btn-register:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        color: white;
+      }
+      .btn-register:active {
+        transform: translateY(0);
+      }
+      .login-link {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #f0f0f0;
+        color: #666;
+        font-size: 14px;
+      }
+      .login-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+      .input-group-mb {
+        margin-bottom: 20px;
+      }
+      .row-two-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .alert {
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .spinner-border {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 8px;
+      }
+      @media (max-width: 576px) {
         .row-two-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+          grid-template-columns: 1fr;
         }
-        .alert {
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .spinner-border {
-            width: 1rem;
-            height: 1rem;
-            margin-right: 8px;
-        }
-        @media (max-width: 576px) {
-            .row-two-cols {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="register-container">
-        <h2>Criar Conta</h2>
-        <p class="register-subtitle">Preencha seus dados para se cadastrar</p>
+      <h2>Criar Conta</h2>
+      <p class="register-subtitle">Preencha seus dados para se cadastrar</p>
 
-        <div id="error-message"></div>
+      <div id="error-message"></div>
 
-        <form id="register-form">
-            <div class="row-two-cols">
-                <div>
-                    <label for="first_name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Seu nome" required>
-                </div>
-                <div>
-                    <label for="last_name" class="form-label">Sobrenome</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Seu sobrenome" required>
-                </div>
-            </div>
-
-            <div class="input-group-mb">
-                <label for="username" class="form-label">Nome de Usuário</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Escolha um nome de usuário" required>
-            </div>
-
-            <div class="input-group-mb">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-            </div>
-
-            <div class="input-group-mb">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Crie uma senha forte" required minlength="8">
-            </div>
-
-            <div class="input-group-mb">
-                <label for="password_confirm" class="form-label">Confirmar Senha</label>
-                <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Digite a senha novamente" required minlength="8">
-            </div>
-
-            <div class="form-check" style="margin-bottom: 20px;">
-                <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
-                <label class="form-check-label" for="terms" style="color: #666; font-size: 14px;">
-                    Aceito os <a href="#" style="color: #667eea; text-decoration: none;">Termos de Serviço</a> e <a href="#" style="color: #667eea; text-decoration: none;">Política de Privacidade</a>
-                </label>
-            </div>
-
-            <button type="submit" class="btn btn-register" id="btn-submit">Criar Conta</button>
-        </form>
-
-        <div class="login-link">
-            Já tem uma conta? <a href="login.html">Faça login</a>
+      <form id="register-form">
+        <div class="row-two-cols">
+          <div>
+            <label for="first_name" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="first_name"
+              name="first_name"
+              placeholder="Seu nome"
+              required
+            />
+          </div>
+          <div>
+            <label for="last_name" class="form-label">Sobrenome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="last_name"
+              name="last_name"
+              placeholder="Seu sobrenome"
+              required
+            />
+          </div>
         </div>
+
+        <div class="input-group-mb">
+          <label for="username" class="form-label">Nome de Usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Escolha um nome de usuário"
+            required
+          />
+        </div>
+
+        <div class="input-group-mb">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="seu.email@exemplo.com"
+            required
+          />
+        </div>
+
+        <div class="input-group-mb">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Crie uma senha forte"
+            required
+            minlength="8"
+          />
+        </div>
+
+        <div class="input-group-mb">
+          <label for="password_confirm" class="form-label"
+            >Confirmar Senha</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="password_confirm"
+            name="password_confirm"
+            placeholder="Digite a senha novamente"
+            required
+            minlength="8"
+          />
+        </div>
+
+        <div class="form-check" style="margin-bottom: 20px">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+          />
+          <label
+            class="form-check-label"
+            for="terms"
+            style="color: #666; font-size: 14px"
+          >
+            Aceito os
+            <a href="#" style="color: #667eea; text-decoration: none"
+              >Termos de Serviço</a
+            >
+            e
+            <a href="#" style="color: #667eea; text-decoration: none"
+              >Política de Privacidade</a
+            >
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-register" id="btn-submit">
+          Criar Conta
+        </button>
+      </form>
+
+      <div class="login-link">
+        Já tem uma conta? <a href="login.html">Faça login</a>
+      </div>
     </div>
 
     <script>
-        const form = document.getElementById('register-form');
-        const btnSubmit = document.getElementById('btn-submit');
-        const errorDiv = document.getElementById('error-message');
+      const form = document.getElementById("register-form");
+      const btnSubmit = document.getElementById("btn-submit");
+      const errorDiv = document.getElementById("error-message");
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-            const password = document.getElementById('password').value;
-            const passwordConfirm = document.getElementById('password_confirm').value;
+        const password = document.getElementById("password").value;
+        const passwordConfirm =
+          document.getElementById("password_confirm").value;
 
-            errorDiv.innerHTML = '';
+        errorDiv.innerHTML = "";
 
-            if (password !== passwordConfirm) {
-                errorDiv.innerHTML = `
+        if (password !== passwordConfirm) {
+          errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         As senhas não coincidem. Por favor, verifique.
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                return;
-            }
+          return;
+        }
 
-            const formData = {
-                first_name: document.getElementById('first_name').value,
-                last_name: document.getElementById('last_name').value,
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
-                password: password,
-                password_confirm: passwordConfirm
-            };
+        const formData = {
+          first_name: document.getElementById("first_name").value,
+          last_name: document.getElementById("last_name").value,
+          username: document.getElementById("username").value,
+          email: document.getElementById("email").value,
+          password: password,
+          password_confirm: passwordConfirm,
+        };
 
-            btnSubmit.disabled = true;
-            btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML =
+          '<span class="spinner-border"></span>Cadastrando...';
 
-            try {
-                const response = await fetch('http://127.0.0.1:8001/api/register/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify(formData)
-                });
+        try {
+          const response = await fetch(
+            "https://testes.globalhost.app.br/api/register/",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
 
-                const data = await response.json();
+              body: JSON.stringify(formData),
+            },
+          );
 
-                if (response.ok) {
-                    errorDiv.innerHTML = `
+          const data = await response.json();
+
+          if (response.ok) {
+            errorDiv.innerHTML = `
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             Cadastro realizado com sucesso! Redirecionando...
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
 
-                    if (data.access) {
-                        localStorage.setItem('access_token', data.access);
-                    }
+            if (data.access) {
+              localStorage.setItem("access_token", data.access);
+            }
 
-                    setTimeout(() => {
-                        window.location.href = 'register_busness.html';
-                    }, 1500);
-
-                } else {
-                    errorDiv.innerHTML = `
+            setTimeout(() => {
+              window.location.href = "register_busness.html";
+            }, 1500);
+          } else {
+            errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${data.detail || 'Erro ao cadastrar. Verifique os dados informados.'}
+                            ${data.detail || "Erro ao cadastrar. Verifique os dados informados."}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
-                }
-            } catch (error) {
-                errorDiv.innerHTML = `
+          }
+        } catch (error) {
+          errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Erro na conexão: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-            } finally {
-                btnSubmit.disabled = false;
-                btnSubmit.innerHTML = 'Criar Conta';
-            }
-        });
+        } finally {
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = "Criar Conta";
+        }
+      });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
