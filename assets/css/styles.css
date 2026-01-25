@@ -92,6 +92,15 @@ body .concontainer-fluid .row {
 
 .btn-primary {
   background-color: #111827;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #9d38dc;
+  transform: scale(1.1);
 }
 
 .btn-back {
