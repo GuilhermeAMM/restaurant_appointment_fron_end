@@ -78,7 +78,8 @@ body {
   transition:
     background-color ease-out,
     transform ease-out;
-  padding: 10px 210px;
+  padding: 10px;
+  width: 100%;
 }
 
 .btn-primary-register:hover {

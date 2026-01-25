@@ -14,7 +14,7 @@
         : `https://testes.globalhost.app.br/api/customer/`;
       btnSubmit.innerHTML = customerId
         ? "Atualizar Cliente"
-        : "Cadastrar Cliente";
+        : "Cadastrar";
 
       function getMethod(method) {
         const methods = {
@@ -118,7 +118,7 @@
             btnSubmit.disabled = false;
             btnSubmit.innerHTML = customerId
               ? "Atualizar Cliente"
-              : "Cadastrar Cliente";
+              : "Cadastrar";
           }
         }
         sendData();
