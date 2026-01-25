@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Agendamento</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+  </head>
+  <body>
+    <div class="register-container">
+      <h2>Cadastro de Agendamento</h2>
+      <p class="register-subtitle">Preencha os dados do agendamento</p>
+
+      <div id="error-message"></div>
+
+      <button class="voltar" onclick="voltar()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-arrow-left me-2"
+          viewBox="0 0 16 16"
+          style="vertical-align: -2px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+          />
+        </svg>
+        Voltar
+      </button>
+
+      <form>
+        <!-- Cadastro do cliente -->
+        <div class="input-group-mb">
+          <label for="customer" class="form-label">Cliente</label>
+          <select class="form-control" id="customer" name="customer" required>
+            <!-- Injection with JS -->
+          </select>
+        </div>
+
+        <!-- Cadastro do agendamento -->
+        <div class="row-three-cols">
+          <div>
+            <label for="number_people" class="form-label">N° de pessoas</label>
+            <input
+              type="number"
+              class="form-control"
+              id="number_people"
+              name="number_people"
+              placeholder="-"
+              required
+            />
+          </div>
+          <div>
+            <label for="start_at" class="form-label">Horário</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              id="start_at"
+              name="start_at"
+              placeholder="start_at"
+              required
+            />
+          </div>
+          <div>
+            <label for="payment_method" class="form-label">Pagamento</label>
+            <select
+              class="form-control"
+              id="payment_method"
+              name="payment_method"
+              required
+            >
+              <option value="">Selecione</option>
+              <option value="CARD">Cartão de Crédito</option>
+              <option value="PIX">Pix</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row-three-cols">
+          <div>
+            <label for="price" class="form-label">Valor da Reserva (R$)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              name="price"
+              data-thousands="."
+              data-decimal=","
+              data-prefix="R$"
+              placeholder="R$ 0,00"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="input-group-mb">
+          <label for="observation" class="form-label">Observação</label>
+          <textarea
+            name="observation"
+            id="observation"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="div-btn-register">
+        <button type="submit" class="btn-primary-register" id="btn-submit">
+          Cadastrar
+        </button>
+        </div>
+      </form>
+    </div>
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/script-form.js"></script>
+    <script src="../assets/js/register_appointment.js"></script>
+  </body>
+</html>

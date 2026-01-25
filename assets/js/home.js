@@ -1,82 +1,4 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <aside class="col-12 col-md-3 col-lg-2 sidebar">
-          <div>
-            <div class="brand">Painel</div>
-            <nav class="nav flex-column">
-              <a class="nav-link" href="home.html"
-                ><i class="fa-solid fa-address-book"></i>Agendamentos</a
-              >
-              <a class="nav-link" href="customers.html"
-                ><i class="fa-solid fa-users"></i>Meus Clientes</a
-              >
-              <a class="nav-link" href="register_customer.html?method=post"
-                ><i class="fa-solid fa-address-card"></i>Cadastrar Cliente</a
-              >
-              <a
-                class="nav-link text-danger"
-                href="#"
-                onclick="
-                  logout();
-                  return false;
-                "
-                >Sair</a
-              >
-            </nav>
-          </div>
-          <div class="div-logo">
-            <span data-component="/head.html"></span>
-          </div>
-        </aside>
-
-        <main class="col-12 col-md-9 col-lg-10 p-4">
-          <div class="content-header">
-            <div>
-              <h4 class="mb-1">Agendamentos</h4>
-              <p class="text-muted mb-0">
-                Visualize e gerencie os agendamentos
-              </p>
-            </div>
-            <button class="btn btn-primary" onclick="createAppointment()">
-              Novo agendamento
-            </button>
-          </div>
-
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="table align-middle">
-                <thead>
-                  <tr>
-                    <th>Cliente</th>
-                    <th>N° de pessoas</th>
-                    <th>Data</th>
-                    <th>Status</th>
-                    <th class="text-end">Acoes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- insert values with JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
-        <footer class="footer">© 2026. Todos os direitos reservados.</footer>
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="auth.js"></script>
-    <script>
-      // ==================== AUTENTICAÇÃO ====================
+  // ==================== AUTENTICAÇÃO ====================
       const accessToken = localStorage.getItem("access_token");
       if (!accessToken) {
         window.location.href = "login.html";
@@ -123,14 +45,14 @@
                             ${statusConfig.text}
                         </span>
                     </td>
-                    <td class="text-end">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="viewAppointment(${appointment.id})">
-                            Ver
+                    <td class="text-end-new">
+                        <button class="btn-detail btn btn-sm btn-outline-secondary" onclick="viewAppointment(${appointment.id})">
+                            Detalhes
                         </button>
-                        <button class="btn btn-sm btn-outline-warning" onclick="updateAppointment(${appointment.id})">
+                        <button class="btn-update btn btn-sm btn-outline-warning" onclick="updateAppointment(${appointment.id})">
                             Atualizar
                         </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="cancelAppointment(${appointment.id})">
+                        <button class="btn-cancel btn btn-sm btn-outline-danger" onclick="cancelAppointment(${appointment.id})">
                             Cancelar
                         </button>
                     </td>
@@ -236,7 +158,3 @@
 
       // Inicializar
       loadAppointments();
-    </script>
-    <script src="assets/js/scripts.js"></script>
-  </body>
-</html>

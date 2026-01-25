@@ -1,76 +1,4 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clientes</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <aside class="col-12 col-md-3 col-lg-2 sidebar">
-          <div>
-            <div class="brand">Painel</div>
-            <nav class="nav flex-column">
-              <a class="nav-link" href="home.html"
-                ><i class="fa-solid fa-address-book"></i>Agendamentos</a
-              >
-              <a class="nav-link" href="register_customer.html?method=post"
-                ><i class="fa-solid fa-address-card"></i>Cadastrar Cliente</a
-              >
-              <a
-                class="nav-link text-danger"
-                href="#"
-                onclick="
-                  logout();
-                  return false;
-                "
-                >Sair</a
-              >
-            </nav>
-          </div>
-          <div class="div-logo">
-            <span data-component="/head.html"></span>
-          </div>
-        </aside>
-
-        <main class="col-12 col-md-9 col-lg-10 p-4">
-          <div class="content-header">
-            <div>
-              <h4 class="mb-1">Clientes Cadastrados</h4>
-              <p class="text-muted mb-0">Visualize todos os clientes</p>
-            </div>
-            <button class="btn btn-primary" onclick="addCustomer()">
-              Cadastrar Cliente
-            </button>
-          </div>
-
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="table align-middle">
-                <thead>
-                  <tr>
-                    <th>Nome Completo</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Data de Cadastro</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Insert customers with JS -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
-        <footer class="footer">© 2026. Todos os direitos reservados.</footer>
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="auth.js"></script>
-    <script>
-      // ==================== AUTENTICAÇÃO ====================
+// ==================== AUTENTICAÇÃO ====================
       const accessToken = localStorage.getItem("access_token");
       if (!accessToken) {
         window.location.href = "login.html";
@@ -98,14 +26,14 @@
                     <td>${customer.phone || "—"}</td>
                     <td>${customer.email || "—"}</td>
                     <td>${formatDateTime(customer.created_at)}</td>
-                    <td class="text-end">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="viewCustomer(${customer.id})">
+                    <td class="text-end-new">
+                        <button class="btn-detail btn btn-sm btn-outline-secondary" onclick="viewCustomer(${customer.id})">
                             Ver Agendamentos
                         </button>
-                        <button class="btn btn-sm btn-outline-warning" onclick="updateCustomer(${customer.id})">
+                        <button class="btn-update btn btn-sm btn-outline-warning" onclick="updateCustomer(${customer.id})">
                             Atualizar
                         </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="excludeCustomer(${customer.id})">
+                        <button class="btn-cancel btn btn-sm btn-outline-danger" onclick="excludeCustomer(${customer.id})">
                             Excluir
                         </button>
                     </td>
@@ -156,7 +84,7 @@
           );
 
           if (response.ok) {
-            alert("Cliente excluido com sucesso!");
+            alert("Cliente excluído com sucesso!");
             loadCustomers();
           } else {
             alert("Erro ao excluir cliente");
@@ -192,7 +120,3 @@
 
       // Inicializar
       loadCustomers();
-    </script>
-    <script src="assets/js/scripts.js"></script>
-  </body>
-</html>

@@ -1,0 +1,312 @@
+/*-------------------------------------------Padrão------------------------------------------------*/
+
+body {
+  background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px 0;
+}
+
+.form-label {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.form-control {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.1);
+  background-color: #fff;
+}
+.form-control::placeholder {
+  color: #bbb;
+}
+.btn-login {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+.btn-login:active {
+  transform: translateY(0);
+}
+.input-group-mb {
+  margin-bottom: 20px;
+}
+.alert {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 8px;
+}
+
+.div-btn-register {
+  text-align: center;
+}
+
+.btn-primary-register {
+  margin: 5px;
+  background-color: #476199;
+  border-radius: 5px;
+  color: white;
+  border-style: none;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 10px 210px;
+}
+
+.btn-primary-register:hover {
+  margin: 5px;
+  background-color: #273554;
+  border-radius: 5px;
+  color: white;
+  border-style: none;
+  transform: scale(1.1);
+}
+
+.voltar {
+  margin: 5px;
+  background-color: #f66767;
+  border-radius: 8px;
+  color: white;
+  border-style: none;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 5px;
+}
+
+.voltar:hover {
+  margin: 5px;
+  background-color: #ef3939;
+  border-radius: 5px;
+  color: white;
+  border-style: none;
+  transform: scale(1.2);
+}
+
+/*-------------------------------------------------Login---------------------------------------*/
+
+.login-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 10px 40px rgb(149, 149, 149);
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+}
+.login-container h2 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.login-subtitle {
+  color: #999;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 15px;
+}
+.forgot-password a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/*------------------------Register_Appointmente, Register_Busness, Register_User-----------------*/
+
+.register-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 10px 40px rgb(149, 149, 149);
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 600px;
+}
+.register-container h2 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.register-subtitle {
+  color: #999;
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/*--------------------------------------Login, Register_Custumers------------------------------*/
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #f0f0f0;
+  color: #666;
+  font-size: 14px;
+}
+.signup-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/*-----------------------Register_Busness, Register_User, Register_Appointment---------------*/
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #f0f0f0;
+  color: #666;
+  font-size: 14px;
+}
+.login-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.row-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+  .row-two-cols,
+  .row-three-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*----------------------------Register_Busness, Register_Appointment------------------------------*/
+
+.row-three-cols {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/*-------------------------------Register_Busness, Register_User ----------------------------------*/
+
+.btn-register {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+.btn-register:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+.btn-register:active {
+  transform: translateY(0);
+}
+
+/*--------------------------------------Register_Customer------------------------------------*/
+
+.register-customer-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 10px 40px rgb(149, 149, 149);
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+}
+.register-customer-container h2 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.register-customer-subtitle {
+  color: #999;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.btn-register-customer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-register-customer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+.btn-register-customer:active {
+  transform: translateY(0);
+}
+.btn-register-customer:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
