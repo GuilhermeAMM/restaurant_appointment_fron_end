@@ -2,12 +2,19 @@
 
 body {
   background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
+  background-image: url("/assets/img/background.svg");
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .form-label {
@@ -93,7 +100,7 @@ body {
 
 .voltar {
   margin: 5px;
-  background-color: #f66767;
+  background-color: #111827;
   border-radius: 8px;
   color: white;
   border-style: none;
@@ -105,7 +112,7 @@ body {
 
 .voltar:hover {
   margin: 5px;
-  background-color: #ef3939;
+  background-color: #4562a0;
   border-radius: 5px;
   color: white;
   border-style: none;
@@ -149,7 +156,7 @@ body {
 /*------------------------Register_Appointmente, Register_Busness, Register_User-----------------*/
 
 .register-container {
-  background: white;
+  background-color: #f4f6fb;
   border-radius: 12px;
   box-shadow: 0px 10px 40px rgb(149, 149, 149);
   padding: 20px 40px;

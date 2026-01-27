@@ -90,17 +90,41 @@ body .concontainer-fluid .row {
   background-color: #cccccc;
 }
 
-.btn-primary {
+.btn-cadastro {
   background-color: #111827;
   transition:
     background-color ease-out,
     transform ease-out;
-  padding: 10px;
+  padding: 8px;
+  font-weight: 700;
+  color: white;
+  border-style: none;
+  border-radius: 7px;
 }
 
-.btn-primary:hover {
-  background-color: #9d38dc;
+.btn-cadastro:hover {
+  background-color: #4562a0;
   transform: scale(1.1);
+  color: white;
+}
+
+.btn-settings {
+  background-color: #111827;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 8px;
+  font-weight: 700;
+  color: white;
+  border-style: none;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+.btn-settings:hover {
+  background-color: #4562a0;
+  transform: scale(1.1);
+  color: white;
 }
 
 .btn-back {
@@ -113,8 +137,8 @@ body .concontainer-fluid .row {
   transition: all 0.2s ease;
 }
 .btn-back:hover {
-  background: #0d6efd;
-  border-color: #0d6efd;
+  background: #4562a0;
+  border-color: #4562a0;
   color: #ffffff;
 }
 
@@ -128,8 +152,8 @@ body .concontainer-fluid .row {
   position: sticky;
   top: 0;
   z-index: 10;
-  color: #4b5563;
-  font-weight: 600;
+  color: #000000;
+  font-weight: 650;
   text-align: center;
 }
 
@@ -137,19 +161,28 @@ body .concontainer-fluid .row {
   text-align: center;
 }
 
+tbody td {
+  color: #797979 !important;
+  font-weight: 600;
+}
+
 /*-----------------------------------------Home, Appointement_Detail--------------------------*/
 
 .badge-confirmed {
-  background: #dcfce7;
-  color: #166534;
+  background: #709560;
+  color: #108f8f;
+  font-size: 16px;
 }
 .badge-pending {
-  background: #fef9c3;
-  color: #854d0e;
+  background: rgb(250, 180, 30);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
 }
 .badge-cancelled {
-  background: #fee2e2;
-  color: #991b1b;
+  background: #fa6969;
+  color: #108f8f;
+  font-size: 16px;
 }
 
 /*------------------------------------------------Appointement_Detail--------------------------*/
@@ -158,45 +191,61 @@ body .concontainer-fluid .row {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  padding: 32px;
-  margin-bottom: 20px;
+  padding: 20px;
 }
 .section-title {
   font-size: 16px;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
+  color: #000000;
   margin-bottom: 20px;
   padding-bottom: 12px;
-  border-top: 2px solid #111827;
 }
 .field-group {
   margin-bottom: 24px;
 }
 .field-label {
   font-size: 13px;
-  font-weight: 500;
-  color: #111827;
+  font-weight: 650;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 6px;
 }
 .field-value {
   font-size: 16px;
-  color: #111827;
-  font-weight: 500;
+  color: #108f8f;
+  font-weight: 650;
 }
+
+.field-value.people {
+  background: #111827;
+  color: #fafafa;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 650;
+  width: 100px;
+  text-align: center;
+}
+
 .field-value.large {
   font-size: 18px;
   font-weight: 600;
-  color: #6b7280;
+  color: #108f8f;
+}
+
+.payment {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4fa65e;
 }
 .badge-payment {
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 14px;
-  font-weight: 500;
-  background: #f3f4f6;
-  color: #374151;
+  font-weight: 650;
+  background: #111827;
+  color: #fafafa;
 }
 .observation-box {
   background: #f9fafb;
@@ -209,18 +258,23 @@ body .concontainer-fluid .row {
 }
 .metadata-section {
   background: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 20px;
-  margin-top: 30px;
+  color: #4b5563;
+  padding: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  min-height: 80px;
 }
 .metadata-item {
-  font-size: 13px;
+  font-size: 15px;
   color: #6b7280;
   margin-bottom: 8px;
 }
 .metadata-item strong {
   color: #374151;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 @media (max-width: 768px) {
@@ -243,6 +297,8 @@ body .concontainer-fluid .row {
   transition:
     background-color ease-out,
     transform ease-out;
+  border-radius: 15px;
+  font-weight: 700;
 }
 
 .text-end-new .btn-update {
@@ -252,6 +308,8 @@ body .concontainer-fluid .row {
   transition:
     background-color ease-out,
     transform ease-out;
+  border-radius: 15px;
+  font-weight: 700;
 }
 .text-end-new .btn-cancel {
   background-color: #ee4943;
@@ -263,25 +321,39 @@ body .concontainer-fluid .row {
   transition:
     background-color ease-out,
     transform ease-out;
+  border-radius: 15px;
+  font-weight: 700;
 }
 
 .text-end-new .btn-detail:hover {
-  background-color: #9d38dc;
+  background-color: #2b4e50;
   color: white;
-  border-color: #9d38dc;
+  border-color: #2b4e50;
   transform: scale(1.2);
+  font-weight: 700;
 }
 
 .text-end-new .btn-update:hover {
-  background-color: #9d38dc;
+  background-color: #6ab946;
   color: white;
-  border-color: #9d38dc;
+  border-color: #6ab946;
   transform: scale(1.2);
+  font-weight: 700;
 }
 
 .text-end-new .btn-cancel:hover {
-  background-color: #9d38dc;
+  background-color: #f02d26;
   color: white;
-  border-color: #9d38dc;
+  border-color: #f02d26;
   transform: scale(1.2);
+  font-weight: 700;
+}
+
+.div-bloco-infos {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #d5e3e4;
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 10px;
+  background-color: #edf2f3;
 }

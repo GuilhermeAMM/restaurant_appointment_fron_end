@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalhes do Agendamento</title>
   </head>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <body>
     <div class="container-fluid">
       <div class="row">
@@ -62,116 +63,116 @@
           </div>
 
           <div class="detail-card">
-            <div class="section-title">Informações Principais</div>
+            <div class="div-bloco-infos">
+              <div class="section-title">Informações Principais</div>
 
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="field-group">
-                  <div class="field-label">Cliente</div>
-                  <div class="field-value large" id="customer">
-                    <!-- Injection customer name -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <div class="field-group">
-                  <div class="field-label">Estabelecimento</div>
-                  <div class="field-value large" id="location">
-                    <!-- Injection establishment name -->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="field-group">
-                  <div class="field-label">Data e Hora</div>
-                  <div class="field-value large" id="start_at">
-                    <!-- Injection date and hour -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <div class="field-group">
-                  <div class="field-label">Status</div>
-                  <div>
-                    <span
-                      class="badge-status badge-confirmed field-value large"
-                      id="status"
-                    >
-                      <!-- Injection status name -->
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="section-title mt-4">
-              Detalhes Financeiros e Atendimento
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <div class="field-group">
-                  <div class="field-label">Valor</div>
-                  <div
-                    class="field-value large"
-                    style="color: #059669"
-                    id="price"
-                  >
-                    <!-- Injection price -->
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <div class="field-group">
-                  <div class="field-label">Forma de Pagamento</div>
-                  <div>
-                    <span class="badge-payment" id="payment_method">
-                      <!-- Injection payment method -->
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <div class="field-group">
-                  <div class="field-label">Número de Pessoas</div>
-                  <div class="field-value" id="number_people">
-                    <!-- Injection number people -->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="section-title mt-4">Observações</div>
-
-            <div class="observation-box" id="observation">
-              <!-- Injection objservations -->
-            </div>
-
-            <div class="metadata-section">
-              <div
-                class="section-title"
-                style="border: none; padding-bottom: 8px; margin-bottom: 12px"
-              >
-                Metadados
-              </div>
               <div class="row">
                 <div class="col-12 col-md-6">
-                  <div class="metadata-item">
-                    <strong>Criado em:</strong>
-                    <span id="created_at">18/01/2026 às 10:30</span>
+                  <div class="field-group">
+                    <div class="field-label">Cliente</div>
+                    <div class="field-value large" id="customer">
+                      <!-- Injection customer name -->
+                    </div>
                   </div>
                 </div>
+
                 <div class="col-12 col-md-6">
-                  <div class="metadata-item">
-                    <strong>Última atualização:</strong>
-                    <span id="updated_at">19/01/2026 às 15:45</span>
+                  <div class="field-group">
+                    <div class="field-label">Estabelecimento</div>
+                    <div class="field-value large" id="location">
+                      <!-- Injection establishment name -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="field-group">
+                    <div class="field-label">Data e Hora</div>
+                    <div class="field-value large" id="start_at">
+                      <!-- Injection date and hour -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <div class="field-group">
+                    <div class="field-label">Status</div>
+                    <div>
+                      <span
+                        class="badge-status badge-confirmed field-value large"
+                        id="status"
+                      >
+                        <!-- Injection status name -->
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="div-bloco-infos">
+              <div class="section-title mt-4">
+                Detalhes Financeiros e Atendimento
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <div class="field-group">
+                    <div class="field-label">Valor</div>
+                    <div class="payment" id="price">
+                      <!-- Injection price -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <div class="field-group">
+                    <div class="field-label">Forma de Pagamento</div>
+                    <div>
+                      <span class="badge-payment" id="payment_method">
+                        <!-- Injection payment method -->
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                  <div class="field-group">
+                    <div class="field-label">Número de Pessoas</div>
+                    <div class="field-value people" id="number_people">
+                      <!-- Injection number people -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="div-bloco-infos">
+              <div class="section-title mt-4">Observações</div>
+
+              <div class="observation-box" id="observation">
+                <!-- Injection objservations -->
+              </div>
+
+              <div class="metadata-section">
+                <div
+                  class="section-title"
+                  style="border: none; padding-bottom: 8px; margin-bottom: 12px"
+                >
+                  Metadados
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="metadata-item">
+                      <strong>Criado em:</strong>
+                      <span id="created_at">18/01/2026 às 10:30</span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="metadata-item">
+                      <strong>Última atualização:</strong>
+                      <span id="updated_at">19/01/2026 às 15:45</span>
+                    </div>
                   </div>
                 </div>
               </div>

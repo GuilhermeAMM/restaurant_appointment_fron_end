@@ -55,8 +55,7 @@
           const appointmentData = await response.json();
 
           console.log(appointmentData);
-          document.getElementById("customer").value =
-            appointmentData.customer_id || "";
+          document.getElementById("customer").innerHTML =`<option value="${appointmentData.customer_id_value}">${appointmentData.customer_name}</option>`;
           document.getElementById("number_people").value =
             appointmentData.number_people || "";
           document.getElementById("start_at").value =

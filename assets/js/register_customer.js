@@ -97,7 +97,7 @@
                     `;
 
               setTimeout(() => {
-                window.location.href = "home.html";
+                window.location.href = "customers.html";
               }, 1000);
             } else {
               errorDiv.innerHTML = `

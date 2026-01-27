@@ -108,7 +108,7 @@
                     `;
 
               setTimeout(() => {
-                window.location.href = "home.html";
+                window.location.href = "busness.html";
               }, 1500);
             } else {
               errorDiv.innerHTML = `

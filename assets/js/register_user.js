@@ -3,7 +3,7 @@
       const errorDiv = document.getElementById("error-message");
 
 function voltar() {
-        window.location.href = `customers.html`;
+        window.location.href = `home.html`;
       }
 
       form.addEventListener("submit", async (e) => {
