@@ -34,7 +34,7 @@ form.addEventListener("submit", async (e) => {
       localStorage.setItem("access_token", data.access);
 
       setTimeout(() => {
-        window.location.href = "home.html";
+        window.location.href = "pages/home.html";
       }, 1000);
     } else {
       errorDiv.innerHTML = `

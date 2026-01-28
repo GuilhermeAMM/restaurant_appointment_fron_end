@@ -62,7 +62,7 @@ async function refreshAccessToken() {
 
 function logout() {
   localStorage.removeItem("access_token");
-  window.location.href = "login.html";
+  window.location.href = "../index.html";
 }
 
 window.fetchWithAuth = fetchWithAuth;
