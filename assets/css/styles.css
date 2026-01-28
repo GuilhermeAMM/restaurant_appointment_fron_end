@@ -81,8 +81,8 @@ body {
   width: 100%;
   color: #fff;
   text-align: left;
-  padding: 0px 10px 10px 25px;
-  font-size: 15px;
+  padding: 15px;
+  font-size: 14px;
   z-index: 9999;
 }
 
@@ -103,25 +103,6 @@ body .concontainer-fluid .row {
 }
 
 .btn-cadastro:hover {
-  background-color: #4562a0;
-  transform: scale(1.1);
-  color: white;
-}
-
-.btn-settings {
-  background-color: #111827;
-  transition:
-    background-color ease-out,
-    transform ease-out;
-  padding: 8px;
-  font-weight: 700;
-  color: white;
-  border-style: none;
-  border-radius: 7px;
-  margin: 10px;
-}
-
-.btn-settings:hover {
   background-color: #4562a0;
   transform: scale(1.1);
   color: white;
@@ -356,4 +337,29 @@ tbody td {
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
   background-color: #edf2f3;
+}
+
+/*-------------------------------------Settings-----------------------------------*/
+
+.settings-options {
+  display: flex;
+}
+
+.btn-settings {
+  background-color: #111827;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 8px;
+  font-weight: 700;
+  color: white;
+  border-style: none;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+.btn-settings:hover {
+  background-color: #4562a0;
+  transform: scale(1.1);
+  color: white;
 }

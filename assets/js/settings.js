@@ -1,5 +1,5 @@
 function updateUser(userId) {
-  window.location.href = `update_user.html?id=${userId}&method=patch`;
+  window.location.href = `register_user.html?id=${userId}&method=patch`;
 }
 
 async function connectStripe() {

@@ -1,20 +1,25 @@
 /*-------------------------------------------Padrão------------------------------------------------*/
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
   background-image: url("/assets/img/background.svg");
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px 0;
+  padding: 0px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0px;
   height: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .form-label {
@@ -123,11 +128,9 @@ body {
 
 .login-container {
   background: white;
-  border-radius: 12px;
   box-shadow: 0px 10px 40px rgb(149, 149, 149);
-  padding: 50px 40px;
-  width: 100%;
-  max-width: 420px;
+  padding: 80px 80px;
+  min-height: 100%;
 }
 .login-container h2 {
   color: #333;
@@ -151,6 +154,81 @@ body {
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
+}
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.div-info {
+  flex: 65%;
+  background-color: #111827;
+}
+
+.div-login {
+  flex: 35%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0px 10px 40px rgb(149, 149, 149);
+}
+
+.login-content {
+  flex: 1; /* ocupa todo o espaço disponível */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-login {
+  text-align: center;
+  font-size: 15px;
+  color: #000000;
+  background-color: #fff;
+  padding: 50px;
+}
+
+.div-info {
+  flex: 65%;
+  background: linear-gradient(135deg, #111827, #12263e);
+  display: flex;
+  align-items: center;
+  padding: 80px;
+  color: #fff;
+  text-align: center;
+}
+
+.info-content {
+  min-width: 50vw;
+  text-align: center;
+}
+
+.info-content h1 {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.info-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+#dynamic-word {
+  color: #fdfdff;
+  margin-left: 8px;
+}
+
+#dynamic-text {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #cfd8e3;
+  min-height: 60px; /* evita "pulo" de layout */
+  transition: opacity 0.3s ease;
 }
 
 /*------------------------Register_Appointmente, Register_Busness, Register_User-----------------*/
@@ -317,4 +395,9 @@ body {
 .btn-register-customer:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.form-reset-password-send-email {
+  display: flex;
+  flex-direction: column;
 }
