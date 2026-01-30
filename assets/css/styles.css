@@ -269,6 +269,10 @@ tbody td {
   }
 }
 
+.text-muted {
+  padding-left: 35px;
+}
+
 /*--------------------------Customer, Home--------------------------*/
 
 .text-end-new .btn-detail {

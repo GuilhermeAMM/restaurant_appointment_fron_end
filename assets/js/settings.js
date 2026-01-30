@@ -1,5 +1,7 @@
-function updateUser(userId) {
-  window.location.href = `register_user.html?id=${userId}&method=patch`;
+// ==================== AUTENTICAÇÃO ====================
+const accessToken = localStorage.getItem("access_token");
+if (!accessToken) {
+  window.location.href = "../index.html";
 }
 
 async function connectStripe() {
@@ -31,6 +33,19 @@ async function loadEstablishment() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function updateEstablishments() {
+  if (!establishmentId) {
+    console.error("Erro ao carregar Estabelecimento");
+    return;
+  }
+
+  window.location.href = `register_busness.html?id=${establishmentId}&method=patch`;
+}
+
+function updateUser(userId) {
+  window.location.href = `register_user.html?id=${userId}&method=patch`;
 }
 
 // Inicializar
