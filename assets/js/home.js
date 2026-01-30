@@ -1,7 +1,7 @@
 // ==================== AUTENTICAÇÃO ====================
 const accessToken = localStorage.getItem("access_token");
 if (!accessToken) {
-  window.location.href = "login.html";
+  window.location.href = "../index.html";
 }
 
 // ==================== FORMATAÇÃO ====================
@@ -106,10 +106,9 @@ async function cancelAppointment(appointmentId) {
 
   try {
     const response = await fetchWithAuth(
-      `testes.globalhost.app.br/api/appointment/${appointmentId}/`,
+      `https://testes.globalhost.app.br/api/appointment/${appointmentId}/`,
       {
-        method: "PATCH",
-        body: JSON.stringify({ status: "cancelled" }),
+        method: "DELETE",
       },
     );
 

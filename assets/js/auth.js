@@ -33,7 +33,7 @@ async function fetchWithAuth(url, options = {}) {
       });
     } else {
       localStorage.removeItem("access_token");
-      window.location.href = "login.html";
+      window.location.href = "../index.html";
       throw new Error("Sessão expirada");
     }
   }

@@ -151,7 +151,7 @@ tbody td {
 
 .badge-confirmed {
   background: #709560;
-  color: #108f8f;
+  color: #ffffff;
   font-size: 16px;
 }
 .badge-pending {
@@ -162,7 +162,7 @@ tbody td {
 }
 .badge-cancelled {
   background: #fa6969;
-  color: #108f8f;
+  color: #ffffff;
   font-size: 16px;
 }
 

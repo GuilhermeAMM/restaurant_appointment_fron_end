@@ -1,8 +1,3 @@
-const accessToken = localStorage.getItem("access_token");
-if (!accessToken) {
-  window.location.href = "login.html";
-}
-
 const form = document.getElementById("register-customer-form");
 const btnSubmit = document.getElementById("btn-submit");
 const errorDiv = document.getElementById("error-message");
@@ -20,6 +15,11 @@ function getMethod(method) {
     post: "POST",
   };
   return methods[method];
+}
+
+// Verificar se usuário está autenticado
+if (!localStorage.getItem("access_token")) {
+  window.location.href = "../index.html";
 }
 
 async function loadCustomerData() {

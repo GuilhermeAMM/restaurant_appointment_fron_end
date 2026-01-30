@@ -13,7 +13,7 @@ function voltar() {
 
 // Verificar se usuário está autenticado
 if (!localStorage.getItem("access_token")) {
-  window.location.href = "login.html";
+  window.location.href = "../index.html";
 }
 
 // Máscara CNPJ
