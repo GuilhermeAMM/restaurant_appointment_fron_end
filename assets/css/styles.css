@@ -151,7 +151,7 @@ tbody td {
 
 .badge-confirmed {
   background: #709560;
-  color: #108f8f;
+  color: #ffffff;
   font-size: 16px;
 }
 .badge-pending {
@@ -162,7 +162,7 @@ tbody td {
 }
 .badge-cancelled {
   background: #fa6969;
-  color: #108f8f;
+  color: #ffffff;
   font-size: 16px;
 }
 
@@ -269,6 +269,10 @@ tbody td {
   }
 }
 
+.text-muted {
+  padding-left: 35px;
+}
+
 /*--------------------------Customer, Home--------------------------*/
 
 .text-end-new .btn-detail {
@@ -362,4 +366,29 @@ tbody td {
   background-color: #4562a0;
   transform: scale(1.1);
   color: white;
+}
+
+.card-margin-settings {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.card-title.mb {
+  margin-bottom: 1rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.icon-status {
+  border: 0.5px solid;
+  border-radius: 15px;
+  padding: 2px;
+  width: 25%;
+  text-align: center;
+  background-color: #6ab946;
+  color: white;
+  font-weight: 700;
 }

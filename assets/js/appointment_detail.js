@@ -1,6 +1,6 @@
     // Verificar autenticação
       if (!localStorage.getItem("access_token")) {
-        window.location.href = "login.html";
+        window.location.href = "../index.html";
       }
 
       // Função para voltar

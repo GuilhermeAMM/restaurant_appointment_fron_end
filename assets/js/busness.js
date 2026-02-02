@@ -1,7 +1,7 @@
 // ==================== AUTENTICAÇÃO ====================
       const accessToken = localStorage.getItem("access_token");
       if (!accessToken) {
-        window.location.href = "login.html";
+        window.location.href = "../index.html";
       }
 
       // ==================== FORMATAÇÃO ====================

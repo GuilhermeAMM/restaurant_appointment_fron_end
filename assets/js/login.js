@@ -8,6 +8,7 @@ form.addEventListener("submit", async (e) => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
+  
   errorDiv.innerHTML = "";
   btnSubmit.disabled = true;
   btnSubmit.innerHTML = '<span class="spinner-border"></span>Entrando...';
@@ -65,7 +66,7 @@ const words = [
 ];
 
 const texts = [
-  "Gerencie reservas, evite filas e aumente sua ocupação.",
+  "Gerencie reservas, evite filas e aumente as vendas.",
   "Controle horários e ofereça uma experiência melhor ao cliente.",
   "Tudo organizado em um único lugar, chega de planilhas!",
   "Facilite para o cliente com PAGAMENTOS ONLINE.",
@@ -85,8 +86,8 @@ function changeText() {
     textEl.style.opacity = 1;
 
     index = (index + 1) % words.length;
-  }, 4000);
+  }, 3000);
 }
 
 changeText();
-setInterval(changeText, 4000);
+setInterval(changeText, 3000);

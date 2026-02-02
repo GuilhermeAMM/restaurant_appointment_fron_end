@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
                             </div>
                 `;
       setTimeout(() => {
-        window.location.href = "/index.html";
+        window.location.href = "../index.html";
       }, 3000);
     } else {
       errorDiv.innerHTML = `

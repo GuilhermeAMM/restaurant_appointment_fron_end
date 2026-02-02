@@ -8,12 +8,12 @@ const url = busnessId
   : `https://testes.globalhost.app.br/api/busness/`;
 
 function voltar() {
-  window.location.href = `busness.html`;
+  window.location.href = `../pages/settings.html`;
 }
 
 // Verificar se usuário está autenticado
 if (!localStorage.getItem("access_token")) {
-  window.location.href = "login.html";
+  window.location.href = "../index.html";
 }
 
 // Máscara CNPJ
@@ -105,7 +105,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
                     `;
 
       setTimeout(() => {
-        window.location.href = "busness.html";
+        window.location.href = "../index.html";
       }, 1500);
     } else {
       errorDiv.innerHTML = `

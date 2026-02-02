@@ -7,9 +7,10 @@ const methodValue = urlParams.get("method");
 const url = appointmentId
   ? `https://testes.globalhost.app.br/api/appointment/${appointmentId}/`
   : `https://testes.globalhost.app.br/api/appointment/`;
+
 // Verificar se usuário está autenticado
 if (!localStorage.getItem("access_token")) {
-  window.location.href = "login.html";
+  window.location.href = "../index.html";
 }
 
 btnSubmit.textContent = appointmentId ? "Atualizar Agendamento" : "Cadastrar";
@@ -61,7 +62,8 @@ async function loadAppointmentData() {
       moment(appointmentData.start_at).format("YYYY-MM-DDTHH:mm") || "";
     document.getElementById("payment_method").value =
       appointmentData.payment_method || "";
-    document.getElementById("price").value = appointmentData.price || "";
+    document.getElementById("price").value =
+      appointmentData.price.replace(".", ",") || "";
     document.getElementById("observation").value =
       appointmentData.observation || "";
   } catch (error) {
