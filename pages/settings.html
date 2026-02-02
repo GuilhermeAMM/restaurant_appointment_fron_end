@@ -56,21 +56,91 @@
               <p class="text-muted mb-0">Visualize e gerencie configurações</p>
             </div>
           </div>
-          <div class="settings-options">
-            <div class="div-stripe_register">
-              <button class="btn-settings" onclick="connectStripe()">
-                Vincular Stripe
-              </button>
-            </div>
-            <div class="div-update_user">
-              <button class="btn-settings" onclick="updateUser()">
-                Atualizar Usuário
-              </button>
-            </div>
-            <div class="div-update_user">
-              <button class="btn-settings" onclick="updateEstablishments()">
-                Atualizar Estabelecimento
-              </button>
+          <div class="grid-cards">
+            <div class="container">
+              <div class="row">
+                <div class="card col-sm card-margin-settings">
+                  <div class="card-body">
+                    <h5 class="card-title mb ">Informações de pagamento</h5>
+                    <div class="container">
+                      <div class="row">
+                        <h6 class="card-text col-sm center-text">
+                          <i class="fa-solid fa-clock"></i>
+                          Status
+                        </h6>
+                        <div class="card-text col-sm">
+                          <p class="icon-status">Átivo</p>
+                        </div>            
+                      </div>
+                    </div>
+                    <button class="btn-settings" onclick="connectStripe()">
+                      Vincular Stripe
+                    </button>
+                  </div>
+                </div>
+                <div class="card col-sm card-margin-settings">
+                  <div class="card-body">
+                    <h5 class="card-title mb">Informações do Usuário</h5>
+                    <div class="container">
+                      <div class="row">
+                        <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-solid fa-user"></i>
+                            Ygor Lima
+                          </p>
+                        </div>
+                        <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-regular fa-envelope"></i>
+                            ygor.lima@gmail.com
+                          </p>
+                        </div>           
+                      </div>
+                      <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-solid fa-user-shield"></i>
+                            ygor@lima
+                          </p>
+                      </div>   
+                    </div>
+                    <button class="btn-settings" onclick="updateUser()">
+                      Atualizar Usuário
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="card col-sm card-margin-settings">
+                  <div class="card-body">
+                    <h5 class="card-title">Informações do estabelecimento</h5>
+                    <div class="container">
+                      <div class="row">
+                        <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-regular fa-building"></i>
+                              Restaurante Bom Sabor
+                          </p>
+                        </div>
+                        <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-solid fa-location-dot"></i>
+                            Av Otário golfeto 855, jardim fosé sampaio junior, Rineirão Preto-SP
+                          </p>
+                        </div>           
+                      </div>
+                      <div class="row">
+                        <div class="card-text col-sm">
+                          <p>
+                            <i class="fa-solid fa-phone"></i>
+                              16996454898
+                          </p>
+                        </div>
+                      </div>
+                    <button class="btn-settings" onclick="updateEstablishments()">
+                      Atualizar Estabelecimento
+                    </button>
+                  </div>
+              </div>
             </div>
           </div>
         </main>

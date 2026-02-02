@@ -367,3 +367,28 @@ tbody td {
   transform: scale(1.1);
   color: white;
 }
+
+.card-margin-settings {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.card-title.mb {
+  margin-bottom: 1rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.icon-status {
+  border: 0.5px solid;
+  border-radius: 15px;
+  padding: 2px;
+  width: 25%;
+  text-align: center;
+  background-color: #6ab946;
+  color: white;
+  font-weight: 700;
+}
