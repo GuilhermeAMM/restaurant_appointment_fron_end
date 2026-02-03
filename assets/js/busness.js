@@ -19,7 +19,8 @@
       }
 
       // ==================== RENDERIZAÇÃO ====================
-      function renderEstablishmentRow(establishment) {
+      function 
+      renderEstablishmentRow(establishment) {
         return `
                 <tr>
                     <td>${establishment.name || "—"}</td>

@@ -82,7 +82,7 @@ body {
   color: #fff;
   text-align: left;
   padding: 15px;
-  font-size: 14px;
+  font-size: 13px;
   z-index: 9999;
 }
 
@@ -273,6 +273,24 @@ tbody td {
   padding-left: 35px;
 }
 
+.div-bloco-infos .btn-cadastro {
+  background-color: #4fa65e;
+  transition:
+    background-color ease-out,
+    transform ease-out;
+  padding: 8px;
+  font-weight: 700;
+  color: white;
+  border-style: none;
+  border-radius: 7px;
+}
+
+.div-bloco-infos .btn-cadastro:hover {
+  background-color: #377241;
+  transform: scale(1.1);
+  color: white;
+}
+
 /*--------------------------Customer, Home--------------------------*/
 
 .text-end-new .btn-detail {
@@ -347,6 +365,13 @@ tbody td {
 
 .settings-options {
   display: flex;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #d5e3e4;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #edf2f3;
+  justify-content: space-between;
 }
 
 .btn-settings {
@@ -394,7 +419,7 @@ tbody td {
   font-weight: 700;
 }
 
-.icon-status-desconnected{
+.icon-status-desconnected {
   background-color: tomato;
 }
 
@@ -409,4 +434,21 @@ tbody td {
 .display-flex-settings-cnpj {
   display: flex;
   flex-direction: row;
+}
+
+.grid-cards .div-card {
+  display: flex;
+}
+
+.grid-cards .div-card .div-bloco-infos {
+  width: 620px;
+  margin: 15px;
+}
+
+.card-body .card-title {
+  padding-bottom: 20px;
+}
+
+.card-body i {
+  padding-right: 5px;
 }

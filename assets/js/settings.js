@@ -11,7 +11,7 @@ async function connectStripe() {
     );
     if (response.ok) {
       const data = await response.json();
-      window.location.href = data.url;
+      window.open(data.url, "_blank");
     }
   } catch (error) {
     console.log(error);
@@ -94,7 +94,7 @@ async function loadEstablishment() {
       document.getElementById("adress").innerHTML = `
        <p>
           <i class="fa-solid fa-location-dot"></i>
-          ${establishment.adress} ${establishment.number}, ${establishment.city}-${establishment.state}
+          ${establishment.adress}, ${establishment.number}, ${establishment.city}-${establishment.state}
         </p>`;
       document.getElementById("phone").innerHTML = `
       <p>

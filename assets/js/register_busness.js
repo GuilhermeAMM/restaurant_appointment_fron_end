@@ -1,11 +1,11 @@
 const btnSubmit = document.getElementById("btn-submit");
 const errorDiv = document.getElementById("error-message");
 const urlParams = new URLSearchParams(window.location.search);
-const busnessId = urlParams.get("id");
+const establishmentId = urlParams.get("id");
 const methodValue = urlParams.get("method");
-const url = busnessId
-  ? `https://testes.globalhost.app.br/api/busness/${busnessId}/`
-  : `https://testes.globalhost.app.br/api/busness/`;
+const url = establishmentId
+  ? `https://testes.globalhost.app.br/api/establishment/${establishmentId}/`
+  : `https://testes.globalhost.app.br/api/establishment/`;
 
 function voltar() {
   window.location.href = `../pages/settings.html`;
@@ -14,6 +14,35 @@ function voltar() {
 // Verificar se usuário está autenticado
 if (!localStorage.getItem("access_token")) {
   window.location.href = "../index.html";
+}
+
+function getMethod(method) {
+  const methods = {
+    patch: "PATCH",
+  };
+  return methods[method];
+}
+
+async function loadestablishmentsData() {
+  try {
+    const response = await fetchWithAuth(url);
+    const establishmentData = await response.json();
+
+    console.log(establishmentData);
+    document.getElementById("name").value = establishmentData.name || "";
+    document.getElementById("cnpj").value = establishmentData.cnpj || "";
+    document.getElementById("cep").value = establishmentData.cep || "";
+  } catch (error) {
+    errorDiv.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Erro ao carregar Estabelecimento: ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>`;
+  }
+}
+
+if (establishmentId) {
+  loadestablishmentsData();
 }
 
 // Máscara CNPJ
