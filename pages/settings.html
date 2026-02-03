@@ -61,17 +61,28 @@
               <div class="row">
                 <div class="card col-sm card-margin-settings">
                   <div class="card-body">
-                    <h5 class="card-title mb ">Informações de pagamento</h5>
+                    <h5 class="card-title mb ">
+                      <i class="fa-regular fa-credit-card"></i>
+                      Informações de pagamento
+                    </h5>
                     <div class="container">
                       <div class="row">
-                        <h6 class="card-text col-sm center-text">
-                          <i class="fa-solid fa-clock"></i>
-                          Status
-                        </h6>
-                        <div class="card-text col-sm">
-                          <p class="icon-status">Átivo</p>
-                        </div>            
+                        <div class="col-sm">
+                          <i class="fa-brands fa-stripe fa-2x"></i>
+                          <div class="card-text" id="status-stripe">
+                            <!-- Injection JS -->
+                          </div>            
+                        </div>
+                        <div class="col-sm">
+                          <h6 class="mb-10">Valor a receber (R$)</h6>
+                          <div class="card-text">
+                            <p>
+                              R$ 153,47
+                            </p>
+                          </div>            
+                        </div>
                       </div>
+
                     </div>
                     <button class="btn-settings" onclick="connectStripe()">
                       Vincular Stripe
@@ -80,27 +91,21 @@
                 </div>
                 <div class="card col-sm card-margin-settings">
                   <div class="card-body">
-                    <h5 class="card-title mb">Informações do Usuário</h5>
+                    <h5 class="card-title mb">
+                      <i class="fa-solid fa-id-card-clip"></i>
+                      Informações do Usuário
+                    </h5>
                     <div class="container">
                       <div class="row">
-                        <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-solid fa-user"></i>
-                            Ygor Lima
-                          </p>
+                        <div class="card-text col-sm" id="name-user">
+                          <!-- JS injection -->
                         </div>
-                        <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-regular fa-envelope"></i>
-                            ygor.lima@gmail.com
-                          </p>
+                        <div class="card-text col-sm" id="email-user">
+                          <!-- JS injection -->
                         </div>           
                       </div>
-                      <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-solid fa-user-shield"></i>
-                            ygor@lima
-                          </p>
+                      <div class="card-text col-sm" id="username">
+                          <!-- JS injection -->
                       </div>   
                     </div>
                     <button class="btn-settings" onclick="updateUser()">
@@ -112,28 +117,25 @@
               </div>
               <div class="card col-sm card-margin-settings">
                   <div class="card-body">
-                    <h5 class="card-title">Informações do estabelecimento</h5>
+                    <h5 class="card-title">
+                      <i class="fa-solid fa-building-columns"></i>
+                      Informações do estabelecimento
+                    </h5>
                     <div class="container">
                       <div class="row">
-                        <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-regular fa-building"></i>
-                              Restaurante Bom Sabor
-                          </p>
+                        <div class="card-text col-sm" id="establishment">
+                          <!-- JS injection -->
                         </div>
-                        <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-solid fa-location-dot"></i>
-                            Av Otário golfeto 855, jardim fosé sampaio junior, Rineirão Preto-SP
-                          </p>
+                        <div class="card-text col-sm" id="adress">
+                         <!-- JS injection -->
                         </div>           
                       </div>
                       <div class="row">
-                        <div class="card-text col-sm">
-                          <p>
-                            <i class="fa-solid fa-phone"></i>
-                              16996454898
-                          </p>
+                        <div class="card-text col-sm" id="phone">
+                          <!-- JS injection -->
+                        </div>
+                        <div class="card-text col-sm" id="cnpj">
+                          <!-- JS injection -->
                         </div>
                       </div>
                     <button class="btn-settings" onclick="updateEstablishments()">

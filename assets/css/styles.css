@@ -382,13 +382,31 @@ tbody td {
   text-align: center;
 }
 
-.icon-status {
+.icon-status-desconnected,
+.icon-status-connected {
   border: 0.5px solid;
   border-radius: 15px;
   padding: 2px;
-  width: 25%;
+  max-width: 50%;
   text-align: center;
   background-color: #6ab946;
   color: white;
   font-weight: 700;
+}
+
+.icon-status-desconnected{
+  background-color: tomato;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 15px;
+}
+
+.display-flex-settings-cnpj {
+  display: flex;
+  flex-direction: row;
 }
