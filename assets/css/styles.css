@@ -460,3 +460,8 @@ tbody td {
   border-radius: 5px;
   border-style: none;
 }
+
+.value-number {
+  font-size: 20px;
+  font-weight: 700;
+}
