@@ -18,7 +18,7 @@ async function connectStripe() {
   }
 }
 
-async function loadPayments(){
+async function loadPaymentsStatus(){
   try {
     const response = await fetchWithAuth('https://testes.globalhost.app.br/api/stripe/status');
     if (response.ok){
@@ -44,6 +44,19 @@ async function loadPayments(){
     }
   }
   catch (error){
+  }
+}
+
+async function loadPaymentValue(){
+  try {
+    const response = await fetchWithAuth('https://testes.globalhost.app.br/api/stripe/payments_value');
+    if (response.ok) {
+      const data = await response.json();
+      document.getElementById("total-value").innerText = `R$ ${data.total}`
+    }
+  }
+  catch(error) {
+    console.log(error);
   }
 }
 
@@ -130,5 +143,6 @@ function updateUser(userId) {
 window.addEventListener("load", async () => {
   await loadUser();
   await loadEstablishment();
-  await loadPayments();
+  await loadPaymentsStatus();
+  await loadPaymentValue();
 });
