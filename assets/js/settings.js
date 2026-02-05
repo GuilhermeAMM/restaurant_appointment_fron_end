@@ -11,12 +11,16 @@ async function connectStripe() {
     );
     if (response.ok) {
       const data = await response.json();
-      window.open(data.url, "_blank");
-    }
-  } catch (error) {
+
+      if (data.connected != true) {
+        window.open(data.url, "_blank");
+      };
+    };
+  } 
+  catch (error) {
     console.log(error);
-  }
-}
+  };
+};
 
 async function loadPaymentsStatus(){
   try {
@@ -31,6 +35,7 @@ async function loadPaymentsStatus(){
             <i class="fa-solid fa-rss"></i>
             ${data.status}
         </p>`
+        document.getElementById("btn-connect-stripe").disabled = true
       }
       else {
          statusStripe.innerHTML = `
