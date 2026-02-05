@@ -40,13 +40,13 @@ async function loadCustomerData() {
   }
 }
 
-function voltar() {
-  window.location.href = `customers.html`;
-}
-
 // Carregar dados se for edição
 if (customerId) {
   loadCustomerData();
+}
+
+function voltar() {
+  window.location.href = `customers.html`;
 }
 
 // Máscara Telefone

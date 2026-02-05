@@ -3,9 +3,23 @@ const errorDiv = document.getElementById("error-message");
 const urlParams = new URLSearchParams(window.location.search);
 const establishmentId = urlParams.get("id");
 const methodValue = urlParams.get("method");
-const url = establishmentId
-  ? `https://testes.globalhost.app.br/api/establishment/${establishmentId}/`
+const getUrl = establishmentId
+  ? `https://testes.globalhost.app.br/api/establishment/`
   : `https://testes.globalhost.app.br/api/establishment/`;
+
+const updateUrl = establishmentId
+  ? `https://testes.globalhost.app.br/api/update_establishment/`
+  : `https://testes.globalhost.app.br/api/update_establishment/`;
+
+btnSubmit.innerHTML = establishmentId ? "Atualizar Cliente" : "Cadastrar";
+
+function getMethod(method) {
+  const methods = {
+    patch: "PATCH",
+    post: "POST",
+  };
+  return methods[method];
+}
 
 function voltar() {
   window.location.href = `../pages/settings.html`;
@@ -16,22 +30,21 @@ if (!localStorage.getItem("access_token")) {
   window.location.href = "../index.html";
 }
 
-function getMethod(method) {
-  const methods = {
-    patch: "PATCH",
-  };
-  return methods[method];
-}
-
 async function loadestablishmentsData() {
   try {
-    const response = await fetchWithAuth(url);
-    const establishmentData = await response.json();
+    const response = await fetchWithAuth(getUrl);
+    const data = await response.json();
+    const establishmentData = data[0];
 
     console.log(establishmentData);
     document.getElementById("name").value = establishmentData.name || "";
     document.getElementById("cnpj").value = establishmentData.cnpj || "";
     document.getElementById("cep").value = establishmentData.cep || "";
+    document.getElementById("telefone").value = establishmentData.phone || "";
+    document.getElementById("endereco").value = establishmentData.adress || "";
+    document.getElementById("cidade").value = establishmentData.city || "";
+    document.getElementById("numero").value = establishmentData.number || "";
+    document.getElementById("estado").value = establishmentData.state || "";
   } catch (error) {
     errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -114,45 +127,49 @@ document.querySelector("form").addEventListener("submit", async function (e) {
   btnSubmit.disabled = true;
   btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
 
-  try {
-    const response = await fetchWithAuth(
-      "https://testes.globalhost.app.br/api/establishment/",
-      {
-        method: "POST",
+  async function sendData() {
+    const method = getMethod(methodValue);
+
+    try {
+      const response = await fetchWithAuth(updateUrl, {
+        method: method,
         body: JSON.stringify(formData),
-      },
-    );
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      errorDiv.innerHTML = `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            Estabelecimento cadastrado com sucesso!
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+      if (response.ok) {
+        errorDiv.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Cliente ${establishmentId ? "atualizado" : "cadastrado"} com sucesso!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
                     `;
 
-      setTimeout(() => {
-        window.location.href = "../index.html";
-      }, 1500);
-    } else {
-      errorDiv.innerHTML = `
+        setTimeout(() => {
+          window.location.href = "settings.html";
+        }, 1000);
+      } else {
+        errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${data.detail || "Erro ao cadastrar estabelecimento"}
+                            ${data.detail || "Dados incorretos"}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
-    }
-  } catch (error) {
-    errorDiv.innerHTML = `
+      }
+    } catch (error) {
+      errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Erro na conexão: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-  } finally {
-    btnSubmit.disabled = false;
-    btnSubmit.innerHTML = "Cadastrar Estabelecimento";
+    } finally {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = establishmentId
+        ? "Atualizar Estabelecimento"
+        : "Cadastrar";
+    }
   }
+  sendData();
 });
