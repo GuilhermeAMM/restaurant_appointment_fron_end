@@ -12,7 +12,11 @@ function voltar() {
   window.location.href = `settings.html`;
 }
 
+/*
 // Verificar se usuário está autenticado
+if (!localStorage.getItem("access_token")) {
+  window.location.href = "../index.html";
+}*/
 
 async function loadUsersData() {
   try {
@@ -35,13 +39,9 @@ async function loadUsersData() {
   }
 }
 
-/*
 if (registerId) {
-  if (!localStorage.getItem("access_token")) {
-    window.location.href = "../index.html";
-  }
   loadUsersData();
-}*/
+}
 
 document.querySelector("form").addEventListener("submit", async function (e) {
   e.preventDefault();
