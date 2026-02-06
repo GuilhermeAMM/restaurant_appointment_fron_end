@@ -3,47 +3,29 @@ const errorDiv = document.getElementById("error-message");
 const urlParams = new URLSearchParams(window.location.search);
 const registerId = urlParams.get("id");
 const methodValue = urlParams.get("method");
-const getUrl = registerId
-  ? `https://testes.globalhost.app.br/api/register/`
-  : `https://testes.globalhost.app.br/api/register/`;
-
-const updateUrl = registerId
-  ? `https://testes.globalhost.app.br/api/update_user/`
-  : `https://testes.globalhost.app.br/api/update_user/`;
+const getUrl = "https://testes.globalhost.app.br/api/register/";
+const updateUrl = `https://testes.globalhost.app.br/api/update_user/${registerId}`;
 
 btnSubmit.innerHTML = registerId ? "Atualizar Cliente" : "Cadastrar";
-
-function getMethod(method) {
-  const methods = {
-    patch: "PATCH",
-    post: "POST",
-  };
-  return methods[method];
-}
 
 function voltar() {
   window.location.href = `settings.html`;
 }
 
 // Verificar se usuário está autenticado
-if (!localStorage.getItem("access_token")) {
-  window.location.href = "../index.html";
-}
 
 async function loadUsersData() {
   try {
-    const response = await fetchWithAuth(getUrl);
-    const data = await response.json();
-    const userData = data[0];
+    const response = await fetchWithAuth(
+      `https://testes.globalhost.app.br/api/register/`,
+    );
+    const userData = await response.json();
 
     console.log(userData);
     document.getElementById("first_name").value = userData.first_name || "";
     document.getElementById("last_name").value = userData.last_name || "";
     document.getElementById("username").value = userData.username || "";
     document.getElementById("email").value = userData.email || "";
-    document.getElementById("password").value = userData.password || "";
-    document.getElementById("password_confirm").value =
-      userData.password_confirm || "";
   } catch (error) {
     errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -53,9 +35,13 @@ async function loadUsersData() {
   }
 }
 
+/*
 if (registerId) {
+  if (!localStorage.getItem("access_token")) {
+    window.location.href = "../index.html";
+  }
   loadUsersData();
-}
+}*/
 
 document.querySelector("form").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -74,11 +60,12 @@ document.querySelector("form").addEventListener("submit", async function (e) {
   btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
 
   async function sendData() {
-    const method = getMethod(methodValue);
+    const method = registerId ? "PATCH" : "POST";
+    const url = registerId ? updateUrl : getUrl;
 
     try {
-      const response = await fetchWithAuth(updateUrl, {
-        method: method,
+      const response = await fetchWithAuth(url, {
+        method,
         body: JSON.stringify(formData),
       });
 

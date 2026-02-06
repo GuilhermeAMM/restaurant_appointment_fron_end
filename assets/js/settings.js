@@ -14,53 +14,50 @@ async function connectStripe() {
 
       if (data.connected != true) {
         window.open(data.url, "_blank");
-      };
-    };
-  } 
-  catch (error) {
+      }
+    }
+  } catch (error) {
     console.log(error);
-  };
-};
+  }
+}
 
-async function loadPaymentsStatus(){
+async function loadPaymentsStatus() {
   try {
-    const response = await fetchWithAuth('https://testes.globalhost.app.br/api/stripe/status');
-    if (response.ok){
+    const response = await fetchWithAuth(
+      "https://testes.globalhost.app.br/api/stripe/status",
+    );
+    if (response.ok) {
       const data = await response.json();
       console.log(data);
       const statusStripe = document.getElementById("status-stripe");
-      if (data.connected){
+      if (data.connected) {
         statusStripe.innerHTML = `
         <p class="icon-status-connected">
             <i class="fa-solid fa-rss"></i>
             ${data.status}
-        </p>`
-        document.getElementById("btn-connect-stripe").disabled = true
-      }
-      else {
-         statusStripe.innerHTML = `
+        </p>`;
+        document.getElementById("btn-connect-stripe").disabled = true;
+      } else {
+        statusStripe.innerHTML = `
         <p class="icon-status-desconnected">
             <i class="fa-solid fa-circle-exclamation"></i>
             ${data.status}
-        </p>`
-
+        </p>`;
       }
-     
     }
-  }
-  catch (error){
-  }
+  } catch (error) {}
 }
 
-async function loadPaymentValue(){
+async function loadPaymentValue() {
   try {
-    const response = await fetchWithAuth('https://testes.globalhost.app.br/api/stripe/payments_value');
+    const response = await fetchWithAuth(
+      "https://testes.globalhost.app.br/api/stripe/payments_value",
+    );
     if (response.ok) {
       const data = await response.json();
-      document.getElementById("total-value").innerText = `R$ ${data.total}`
+      document.getElementById("total-value").innerText = `R$ ${data.total}`;
     }
-  }
-  catch(error) {
+  } catch (error) {
     console.log(error);
   }
 }
@@ -69,9 +66,13 @@ let establishmentId = null;
 
 async function loadUser() {
   try {
-    const response = await fetchWithAuth("https://testes.globalhost.app.br/api/register/");
+    const response = await fetchWithAuth(
+      "https://testes.globalhost.app.br/api/register/",
+    );
     if (response.ok) {
       const data = await response.json();
+      registerId = data.id;
+
       document.getElementById("name-user").innerHTML = `
       <p>
         <i class="fa-solid fa-user"></i>
@@ -88,12 +89,10 @@ async function loadUser() {
         ${data.username}
       </p> `;
     }
-  }
-  catch(error){
+  } catch (error) {
     console.log(error);
   }
-};
-
+}
 
 async function loadEstablishment() {
   try {
@@ -124,7 +123,7 @@ async function loadEstablishment() {
         <strong><p class="mr-5">CNPJ:</p></strong>
         <p>${establishment.cnpj}</p>
       </div>
-      `
+      `;
     }
   } catch (error) {
     console.log(error);
@@ -140,8 +139,12 @@ function updateEstablishments() {
   window.location.href = `register_busness.html?id=${establishmentId}&method=patch`;
 }
 
-function updateUser(userId) {
-  window.location.href = `register_user.html?id=${userId}&method=patch`;
+function updateUser(registerId) {
+  if (!registerId) {
+    console.error("Erro ao carregar Usuário");
+    return;
+  }
+  window.location.href = `register_user.html?id=${registerId}&method=patch`;
 }
 
 // Inicializar
