@@ -123,7 +123,6 @@ async function cancelAppointment(appointmentId) {
     alert("Erro ao cancelar agendamento");
   }
 }
-
 // ==================== CARREGAMENTO ====================
 async function loadAppointments() {
   const urlParams = new URLSearchParams(window.location.search);
