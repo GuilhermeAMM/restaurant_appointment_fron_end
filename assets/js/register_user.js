@@ -1,88 +1,105 @@
-const form = document.getElementById("register-form");
 const btnSubmit = document.getElementById("btn-submit");
 const errorDiv = document.getElementById("error-message");
+const urlParams = new URLSearchParams(window.location.search);
+const registerId = urlParams.get("id");
+const methodValue = urlParams.get("method");
+const getUrl = "https://testes.globalhost.app.br/api/register/";
+const updateUrl = `https://testes.globalhost.app.br/api/update_user/${registerId}`;
+
+btnSubmit.innerHTML = registerId ? "Atualizar Cliente" : "Cadastrar";
 
 function voltar() {
-  window.location.href = `../pages/settings.html`;
+  window.location.href = `settings.html`;
 }
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+async function loadUsersData() {
+  try {
+    const response = await fetchWithAuth(
+      `https://testes.globalhost.app.br/api/register/`,
+    );
+    const userData = await response.json();
 
-  const password = document.getElementById("password").value;
-  const passwordConfirm = document.getElementById("password_confirm").value;
-
-  errorDiv.innerHTML = "";
-
-  if (password !== passwordConfirm) {
+    console.log(userData);
+    document.getElementById("first_name").value = userData.first_name || "";
+    document.getElementById("last_name").value = userData.last_name || "";
+    document.getElementById("username").value = userData.username || "";
+    document.getElementById("email").value = userData.email || "";
+  } catch (error) {
     errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        As senhas não coincidem. Por favor, verifique.
+                        Erro ao carregar Usuario: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                `;
-    return;
+                    </div>`;
   }
+}
+
+if (registerId) {
+  if (!localStorage.getItem("access_token")) {
+    window.location.href = "../index.html";
+  }
+  loadUsersData();
+}
+
+document.querySelector("form").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
   const formData = {
     first_name: document.getElementById("first_name").value,
     last_name: document.getElementById("last_name").value,
     username: document.getElementById("username").value,
     email: document.getElementById("email").value,
-    password: password,
-    password_confirm: passwordConfirm,
+    password: document.getElementById("password").value,
+    password_confirm: document.getElementById("password_confirm").value,
   };
 
+  errorDiv.innerHTML = "";
   btnSubmit.disabled = true;
   btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
 
-  try {
-    const response = await fetch(
-      "https://testes.globalhost.app.br/api/register/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+  async function sendData() {
+    const method = registerId ? "PATCH" : "POST";
+    const url = registerId ? updateUrl : getUrl;
 
+    try {
+      const response = await fetchWithAuth(url, {
+        method,
         body: JSON.stringify(formData),
-      },
-    );
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      errorDiv.innerHTML = `
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            Cadastro realizado com sucesso! Redirecionando...
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+      if (response.ok) {
+        errorDiv.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Cliente ${registerId ? "atualizado" : "cadastrado"} com sucesso!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
                     `;
 
-      if (data.access) {
-        localStorage.setItem("access_token", data.access);
-      }
-
-      setTimeout(() => {
-        window.location.href = "register_busness.html";
-      }, 1500);
-    } else {
-      errorDiv.innerHTML = `
+        setTimeout(() => {
+          window.location.href = "settings.html";
+        }, 1000);
+      } else {
+        errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${data.detail || "Erro ao cadastrar. Verifique os dados informados."}
+                            ${data.detail || "Dados incorretos"}
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
-    }
-  } catch (error) {
-    errorDiv.innerHTML = `
+      }
+    } catch (error) {
+      errorDiv.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Erro na conexão: ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-  } finally {
-    btnSubmit.disabled = false;
-    btnSubmit.innerHTML = "Criar Conta";
+    } finally {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = registerId
+        ? "Atualizar Estabelecimento"
+        : "Cadastrar";
+    }
   }
+  sendData();
 });

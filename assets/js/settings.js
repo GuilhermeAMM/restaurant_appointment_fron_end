@@ -139,14 +139,14 @@ function updateEstablishments() {
   window.location.href = `register_busness.html?id=${establishmentId}&method=patch`;
 }
 
-/*
+
 function updateUser(registerId) {
   if (!registerId) {
     console.error("Erro ao carregar Usuário");
     return;
   }
   window.location.href = `register_user.html?id=${registerId}&method=patch`;
-}*/
+}
 
 // Inicializar
 window.addEventListener("load", async () => {
