@@ -1,12 +1,11 @@
 const btnSubmit = document.getElementById("btn-submit");
 const errorDiv = document.getElementById("error-message");
 const urlParams = new URLSearchParams(window.location.search);
-const registerId = urlParams.get("id");
 const methodValue = urlParams.get("method");
 const getUrl = "https://testes.globalhost.app.br/api/register/";
-const updateUrl = `https://testes.globalhost.app.br/api/update_user/${registerId}`;
+const updateUrl = `https://testes.globalhost.app.br/api/update_user/`;
 
-btnSubmit.innerHTML = registerId ? "Atualizar Cliente" : "Cadastrar";
+btnSubmit.innerHTML = methodValue ? "Atualizar Cliente" : "Cadastrar";
 
 function voltar() {
   window.location.href = `settings.html`;
@@ -19,7 +18,6 @@ async function loadUsersData() {
     );
     const userData = await response.json();
 
-    console.log(userData);
     document.getElementById("first_name").value = userData.first_name || "";
     document.getElementById("last_name").value = userData.last_name || "";
     document.getElementById("username").value = userData.username || "";
@@ -33,7 +31,7 @@ async function loadUsersData() {
   }
 }
 
-if (registerId) {
+if (methodValue) {
   if (!localStorage.getItem("access_token")) {
     window.location.href = "../index.html";
   }
@@ -57,8 +55,8 @@ document.querySelector("form").addEventListener("submit", async function (e) {
   btnSubmit.innerHTML = '<span class="spinner-border"></span>Cadastrando...';
 
   async function sendData() {
-    const method = registerId ? "PATCH" : "POST";
-    const url = registerId ? updateUrl : getUrl;
+    const method = methodValue ? "PATCH" : "POST";
+    const url = methodValue ? updateUrl : getUrl;
 
     try {
       const response = await fetchWithAuth(url, {
@@ -71,7 +69,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
       if (response.ok) {
         errorDiv.innerHTML = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Cliente ${registerId ? "atualizado" : "cadastrado"} com sucesso!
+                        Cliente ${methodValue ? "atualizado" : "cadastrado"} com sucesso!
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                     `;
