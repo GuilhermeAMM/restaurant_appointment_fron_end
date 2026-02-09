@@ -71,8 +71,7 @@ async function loadUser() {
     );
     if (response.ok) {
       const data = await response.json();
-      registerId = data.id;
-
+    
       document.getElementById("name-user").innerHTML = `
       <p>
         <i class="fa-solid fa-user"></i>
@@ -140,12 +139,8 @@ function updateEstablishments() {
 }
 
 
-function updateUser(registerId) {
-  if (!registerId) {
-    console.error("Erro ao carregar Usuário");
-    return;
-  }
-  window.location.href = `register_user.html?id=${registerId}&method=patch`;
+function updateUser() {
+  window.location.href = `register_user.html?method=patch`;
 }
 
 // Inicializar
