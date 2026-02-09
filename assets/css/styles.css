@@ -161,7 +161,7 @@ tbody td {
   font-weight: 600;
 }
 .badge-cancelled {
-  background: #fa6969;
+  background: #f02d26;
   color: #ffffff;
   font-size: 16px;
 }
@@ -443,7 +443,6 @@ tbody td {
 
 .grid-cards .div-card .div-bloco-infos {
   width: 750px;
-  
 }
 
 .card-body .card-title {
