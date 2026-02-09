@@ -8,7 +8,7 @@ const updateUrl = `https://testes.globalhost.app.br/api/update_user/`;
 btnSubmit.innerHTML = methodValue ? "Atualizar Cliente" : "Cadastrar";
 
 function voltar() {
-  window.location.href = `settings.html`;
+  window.location.href = methodValue ? `settings.html` : `../index.html`;
 }
 
 async function loadUsersData() {
