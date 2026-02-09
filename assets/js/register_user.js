@@ -94,7 +94,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
                 `;
     } finally {
       btnSubmit.disabled = false;
-      btnSubmit.innerHTML = registerId
+      btnSubmit.innerHTML = methodValue
         ? "Atualizar Estabelecimento"
         : "Cadastrar";
     }
