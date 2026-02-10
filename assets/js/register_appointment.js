@@ -41,7 +41,7 @@ async function loadCustomers() {
     });
     console.log(customerSelect);
     customerSelect.innerHTML =
-      `<option value="">Selecione</option>` + customersOptions;
+      `<option value="">Selecione o Cliente</option>` + customersOptions;
   } catch (error) {
     console.log("Erro ao carregar clientes: ", error);
   }
@@ -120,7 +120,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
       if (response.ok) {
         errorDiv.innerHTML = `
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                Agendamento cadastrado com sucesso!
+                                Agendamento ${appointmentId ? "atualizado" : "cadastrado"} com sucesso!
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                         `;

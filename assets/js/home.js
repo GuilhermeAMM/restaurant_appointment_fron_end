@@ -140,7 +140,11 @@ async function loadAppointments() {
     const appointments = await response.json();
 
     if (!appointments || appointments.length === 0) {
-      updateTable(renderEmptyState("Nenhum agendamento encontrado"));
+      updateTable(
+        renderEmptyState(
+          "Nenhum agendamento encontrado, cadastre um agendamento no botão a direita",
+        ),
+      );
       return;
     }
 

@@ -38,6 +38,13 @@ if (methodValue) {
   loadUsersData();
 }
 
+const usernameInput = document.getElementById("username");
+
+usernameInput.addEventListener("input", () => {
+  // Remove tudo que NÃO for letra (a-z, A-Z)
+  usernameInput.value = usernameInput.value.replace(/[^a-zA-Z]/g, "");
+});
+
 document.querySelector("form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -73,10 +80,15 @@ document.querySelector("form").addEventListener("submit", async function (e) {
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                     `;
+        if (data.access) {
+          localStorage.setItem("access_token", data.access);
+        }
 
         setTimeout(() => {
-          window.location.href = "settings.html";
-        }, 1000);
+          window.location.href = methodValue
+            ? `settings.html`
+            : `register_busness.html?method=post`;
+        }, 1500);
       } else {
         errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -94,9 +106,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
                 `;
     } finally {
       btnSubmit.disabled = false;
-      btnSubmit.innerHTML = methodValue
-        ? "Atualizar Estabelecimento"
-        : "Cadastrar";
+      btnSubmit.innerHTML = methodValue ? "Atualizar Cliente" : "Cadastrar";
     }
   }
   sendData();

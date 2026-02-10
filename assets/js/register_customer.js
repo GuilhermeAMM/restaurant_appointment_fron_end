@@ -95,7 +95,7 @@ form.addEventListener("submit", async (e) => {
 
         setTimeout(() => {
           window.location.href = "customers.html";
-        }, 1000);
+        }, 1500);
       } else {
         errorDiv.innerHTML = `
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">

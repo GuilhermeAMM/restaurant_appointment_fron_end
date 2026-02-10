@@ -109,9 +109,9 @@ async function loadCustomers() {
     const rowsHtml = customers.map(renderCustomerRow).join("");
     updateTable(rowsHtml);
   } catch (error) {
-    console.error("Erro ao carregar agendamentos:", error);
+    console.error("Erro ao carregar Clientes:", error);
     updateTable(
-      renderErrorState("Erro ao carregar agendamentos. Tente novamente."),
+      renderErrorState("Nenhum cliente cadastado, cadastre um cliente no botão a direita."),
     );
   }
 }

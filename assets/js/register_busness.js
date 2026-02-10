@@ -9,9 +9,11 @@ const getUrl = establishmentId
 
 const updateUrl = establishmentId
   ? `https://testes.globalhost.app.br/api/update_establishment/`
-  : `https://testes.globalhost.app.br/api/update_establishment/`;
+  : `https://testes.globalhost.app.br/api/establishment/`;
 
-btnSubmit.innerHTML = establishmentId ? "Atualizar Cliente" : "Cadastrar";
+btnSubmit.innerHTML = establishmentId
+  ? "Atualizar Estabelecimento"
+  : "Cadastrar";
 
 function getMethod(method) {
   const methods = {
@@ -141,7 +143,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
       if (response.ok) {
         errorDiv.innerHTML = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Cliente ${establishmentId ? "atualizado" : "cadastrado"} com sucesso!
+                        Estabelecimento ${establishmentId ? "atualizado" : "cadastrado"} com sucesso!
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                     `;
