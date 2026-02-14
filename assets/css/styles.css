@@ -10,7 +10,6 @@ body {
   background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
   color: #d1d5db;
   padding: 24px 16px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,7 +60,6 @@ body {
 .table-responsive {
   max-height: 80vh; /* Altura máxima antes de criar scroll */
   overflow-y: auto;
-  overflow-x: hidden;
 }
 .table thead {
   background: #f8fafc;
